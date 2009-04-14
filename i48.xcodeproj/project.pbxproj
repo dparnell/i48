@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* i48AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* i48AppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
+		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
+		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
+		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
+		289233A60DB2D0840083E9F9 /* FlipsideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A30DB2D0840083E9F9 /* FlipsideView.m */; };
+		289233A70DB2D0840083E9F9 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* MainView.m */; };
+		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
+		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
+		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		655E47E00F94469C00F8AE5E /* actions.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47B10F94469C00F8AE5E /* actions.c */; };
+		655E47E30F94469C00F8AE5E /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BA0F94469C00F8AE5E /* device.c */; };
+		655E47E40F94469C00F8AE5E /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
+		655E47E60F94469C00F8AE5E /* emulate.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BF0F94469C00F8AE5E /* emulate.c */; };
+		655E47E70F94469C00F8AE5E /* errors.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C00F94469C00F8AE5E /* errors.c */; };
+		655E47E80F94469C00F8AE5E /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C80F94469C00F8AE5E /* init.c */; };
+		655E47E90F94469C00F8AE5E /* lcd.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C90F94469C00F8AE5E /* lcd.c */; };
+		655E47EB0F94469C00F8AE5E /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47CB0F94469C00F8AE5E /* memory.c */; };
+		655E47ED0F94469C00F8AE5E /* options.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47CE0F94469C00F8AE5E /* options.c */; };
+		655E47EE0F94469C00F8AE5E /* register.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D00F94469C00F8AE5E /* register.c */; };
+		655E47EF0F94469C00F8AE5E /* resources.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D10F94469C00F8AE5E /* resources.c */; };
+		655E47F00F94469C00F8AE5E /* romio.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D30F94469C00F8AE5E /* romio.c */; };
+		655E47F10F94469C00F8AE5E /* rpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D50F94469C00F8AE5E /* rpl.c */; };
+		655E47F20F94469C00F8AE5E /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D70F94469C00F8AE5E /* serial.c */; };
+		655E47F30F94469C00F8AE5E /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D90F94469C00F8AE5E /* timer.c */; };
+		655E47F40F94469C00F8AE5E /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47DB0F94469C00F8AE5E /* version.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* i48AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48AppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* i48AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = i48AppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* i48.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = i48.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
+		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		289233A20DB2D0840083E9F9 /* FlipsideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideView.h; path = Classes/FlipsideView.h; sourceTree = "<group>"; };
+		289233A30DB2D0840083E9F9 /* FlipsideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideView.m; path = Classes/FlipsideView.m; sourceTree = "<group>"; };
+		289233A40DB2D0840083E9F9 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainView.h; path = Classes/MainView.h; sourceTree = "<group>"; };
+		289233A50DB2D0840083E9F9 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainView.m; path = Classes/MainView.m; sourceTree = "<group>"; };
+		289233A80DB2D0DB0083E9F9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
+		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
+		289233AA0DB2D0DB0083E9F9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		289233AB0DB2D0DB0083E9F9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideViewController.h; path = Classes/FlipsideViewController.h; sourceTree = "<group>"; };
+		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* i48_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48_Prefix.pch; sourceTree = "<group>"; };
+		655E47B10F94469C00F8AE5E /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = emulator/actions.c; sourceTree = "<group>"; };
+		655E47B20F94469C00F8AE5E /* annunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = annunc.h; path = emulator/annunc.h; sourceTree = "<group>"; };
+		655E47B30F94469C00F8AE5E /* append.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = append.h; path = emulator/append.h; sourceTree = "<group>"; };
+		655E47B40F94469C00F8AE5E /* buttons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buttons.h; path = emulator/buttons.h; sourceTree = "<group>"; };
+		655E47B50F94469C00F8AE5E /* checkrom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = checkrom.c; path = emulator/checkrom.c; sourceTree = "<group>"; };
+		655E47B60F94469C00F8AE5E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = emulator/config.h; sourceTree = "<group>"; };
+		655E47B70F94469C00F8AE5E /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = emulator/constants.h; sourceTree = "<group>"; };
+		655E47B80F94469C00F8AE5E /* debugger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debugger.c; path = emulator/debugger.c; sourceTree = "<group>"; };
+		655E47B90F94469C00F8AE5E /* debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debugger.h; path = emulator/debugger.h; sourceTree = "<group>"; };
+		655E47BA0F94469C00F8AE5E /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device.c; path = emulator/device.c; sourceTree = "<group>"; };
+		655E47BB0F94469C00F8AE5E /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = device.h; path = emulator/device.h; sourceTree = "<group>"; };
+		655E47BC0F94469C00F8AE5E /* disasm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = disasm.c; path = emulator/disasm.c; sourceTree = "<group>"; };
+		655E47BD0F94469C00F8AE5E /* disasm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = disasm.h; path = emulator/disasm.h; sourceTree = "<group>"; };
+		655E47BE0F94469C00F8AE5E /* dump2rom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dump2rom.c; path = emulator/dump2rom.c; sourceTree = "<group>"; };
+		655E47BF0F94469C00F8AE5E /* emulate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = emulate.c; path = emulator/emulate.c; sourceTree = "<group>"; };
+		655E47C00F94469C00F8AE5E /* errors.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = errors.c; path = emulator/errors.c; sourceTree = "<group>"; };
+		655E47C10F94469C00F8AE5E /* errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = errors.h; path = emulator/errors.h; sourceTree = "<group>"; };
+		655E47C20F94469C00F8AE5E /* global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = global.h; path = emulator/global.h; sourceTree = "<group>"; };
+		655E47C30F94469C00F8AE5E /* hp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hp.h; path = emulator/hp.h; sourceTree = "<group>"; };
+		655E47C40F94469C00F8AE5E /* hp48.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hp48.h; path = emulator/hp48.h; sourceTree = "<group>"; };
+		655E47C50F94469C00F8AE5E /* hp48_emu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hp48_emu.h; path = emulator/hp48_emu.h; sourceTree = "<group>"; };
+		655E47C60F94469C00F8AE5E /* hp48char.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hp48char.h; path = emulator/hp48char.h; sourceTree = "<group>"; };
+		655E47C70F94469C00F8AE5E /* icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icon.h; path = emulator/icon.h; sourceTree = "<group>"; };
+		655E47C80F94469C00F8AE5E /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = init.c; path = emulator/init.c; sourceTree = "<group>"; };
+		655E47C90F94469C00F8AE5E /* lcd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lcd.c; path = emulator/lcd.c; sourceTree = "<group>"; };
+		655E47CA0F94469C00F8AE5E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = emulator/main.c; sourceTree = "<group>"; };
+		655E47CB0F94469C00F8AE5E /* memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memory.c; path = emulator/memory.c; sourceTree = "<group>"; };
+		655E47CC0F94469C00F8AE5E /* mkcard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mkcard.c; path = emulator/mkcard.c; sourceTree = "<group>"; };
+		655E47CD0F94469C00F8AE5E /* mmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mmu.h; path = emulator/mmu.h; sourceTree = "<group>"; };
+		655E47CE0F94469C00F8AE5E /* options.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = options.c; path = emulator/options.c; sourceTree = "<group>"; };
+		655E47CF0F94469C00F8AE5E /* options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = options.h; path = emulator/options.h; sourceTree = "<group>"; };
+		655E47D00F94469C00F8AE5E /* register.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = register.c; path = emulator/register.c; sourceTree = "<group>"; };
+		655E47D10F94469C00F8AE5E /* resources.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = resources.c; path = emulator/resources.c; sourceTree = "<group>"; };
+		655E47D20F94469C00F8AE5E /* resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resources.h; path = emulator/resources.h; sourceTree = "<group>"; };
+		655E47D30F94469C00F8AE5E /* romio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = romio.c; path = emulator/romio.c; sourceTree = "<group>"; };
+		655E47D40F94469C00F8AE5E /* romio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = romio.h; path = emulator/romio.h; sourceTree = "<group>"; };
+		655E47D50F94469C00F8AE5E /* rpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rpl.c; path = emulator/rpl.c; sourceTree = "<group>"; };
+		655E47D60F94469C00F8AE5E /* rpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rpl.h; path = emulator/rpl.h; sourceTree = "<group>"; };
+		655E47D70F94469C00F8AE5E /* serial.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = serial.c; path = emulator/serial.c; sourceTree = "<group>"; };
+		655E47D80F94469C00F8AE5E /* small.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = small.h; path = emulator/small.h; sourceTree = "<group>"; };
+		655E47D90F94469C00F8AE5E /* timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = timer.c; path = emulator/timer.c; sourceTree = "<group>"; };
+		655E47DA0F94469C00F8AE5E /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = timer.h; path = emulator/timer.h; sourceTree = "<group>"; };
+		655E47DB0F94469C00F8AE5E /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = emulator/version.c; sourceTree = "<group>"; };
+		655E47DC0F94469C00F8AE5E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = emulator/version.h; sourceTree = "<group>"; };
+		655E47DD0F94469C00F8AE5E /* X48.ad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = X48.ad.h; path = emulator/X48.ad.h; sourceTree = "<group>"; };
+		655E47DE0F94469C00F8AE5E /* x48_x11.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = x48_x11.c; path = emulator/x48_x11.c; sourceTree = "<group>"; };
+		655E47DF0F94469C00F8AE5E /* x48_x11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x48_x11.h; path = emulator/x48_x11.h; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Application Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				289233AA0DB2D0DB0083E9F9 /* RootViewController.h */,
+				289233AB0DB2D0DB0083E9F9 /* RootViewController.m */,
+				1D3623240D0F684500981E51 /* i48AppDelegate.h */,
+				1D3623250D0F684500981E51 /* i48AppDelegate.m */,
+			);
+			name = "Application Controllers";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* i48.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		281C6CD70DB2D82200F60ACC /* Flipside View */ = {
+			isa = PBXGroup;
+			children = (
+				289233A20DB2D0840083E9F9 /* FlipsideView.h */,
+				289233A30DB2D0840083E9F9 /* FlipsideView.m */,
+				289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */,
+				289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */,
+			);
+			name = "Flipside View";
+			sourceTree = "<group>";
+		};
+		289233A00DB2D0730083E9F9 /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				289233A40DB2D0840083E9F9 /* MainView.h */,
+				289233A50DB2D0840083E9F9 /* MainView.m */,
+				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
+				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
+			);
+			name = "Main View";
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				655E47B00F94468A00F8AE5E /* Emulator */,
+				289233A00DB2D0730083E9F9 /* Main View */,
+				281C6CD70DB2D82200F60ACC /* Flipside View */,
+				080E96DDFE201D6D7F000001 /* Application Controllers */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* i48_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
+				280E754B0DD40C5E005A515E /* MainView.xib */,
+				280E754C0DD40C5E005A515E /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765580DF743DE002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		655E47B00F94468A00F8AE5E /* Emulator */ = {
+			isa = PBXGroup;
+			children = (
+				655E47B10F94469C00F8AE5E /* actions.c */,
+				655E47B20F94469C00F8AE5E /* annunc.h */,
+				655E47B30F94469C00F8AE5E /* append.h */,
+				655E47B40F94469C00F8AE5E /* buttons.h */,
+				655E47B50F94469C00F8AE5E /* checkrom.c */,
+				655E47B60F94469C00F8AE5E /* config.h */,
+				655E47B70F94469C00F8AE5E /* constants.h */,
+				655E47B80F94469C00F8AE5E /* debugger.c */,
+				655E47B90F94469C00F8AE5E /* debugger.h */,
+				655E47BA0F94469C00F8AE5E /* device.c */,
+				655E47BB0F94469C00F8AE5E /* device.h */,
+				655E47BC0F94469C00F8AE5E /* disasm.c */,
+				655E47BD0F94469C00F8AE5E /* disasm.h */,
+				655E47BE0F94469C00F8AE5E /* dump2rom.c */,
+				655E47BF0F94469C00F8AE5E /* emulate.c */,
+				655E47C00F94469C00F8AE5E /* errors.c */,
+				655E47C10F94469C00F8AE5E /* errors.h */,
+				655E47C20F94469C00F8AE5E /* global.h */,
+				655E47C30F94469C00F8AE5E /* hp.h */,
+				655E47C40F94469C00F8AE5E /* hp48.h */,
+				655E47C50F94469C00F8AE5E /* hp48_emu.h */,
+				655E47C60F94469C00F8AE5E /* hp48char.h */,
+				655E47C70F94469C00F8AE5E /* icon.h */,
+				655E47C80F94469C00F8AE5E /* init.c */,
+				655E47C90F94469C00F8AE5E /* lcd.c */,
+				655E47CA0F94469C00F8AE5E /* main.c */,
+				655E47CB0F94469C00F8AE5E /* memory.c */,
+				655E47CC0F94469C00F8AE5E /* mkcard.c */,
+				655E47CD0F94469C00F8AE5E /* mmu.h */,
+				655E47CE0F94469C00F8AE5E /* options.c */,
+				655E47CF0F94469C00F8AE5E /* options.h */,
+				655E47D00F94469C00F8AE5E /* register.c */,
+				655E47D10F94469C00F8AE5E /* resources.c */,
+				655E47D20F94469C00F8AE5E /* resources.h */,
+				655E47D30F94469C00F8AE5E /* romio.c */,
+				655E47D40F94469C00F8AE5E /* romio.h */,
+				655E47D50F94469C00F8AE5E /* rpl.c */,
+				655E47D60F94469C00F8AE5E /* rpl.h */,
+				655E47D70F94469C00F8AE5E /* serial.c */,
+				655E47D80F94469C00F8AE5E /* small.h */,
+				655E47D90F94469C00F8AE5E /* timer.c */,
+				655E47DA0F94469C00F8AE5E /* timer.h */,
+				655E47DB0F94469C00F8AE5E /* version.c */,
+				655E47DC0F94469C00F8AE5E /* version.h */,
+				655E47DD0F94469C00F8AE5E /* X48.ad.h */,
+				655E47DE0F94469C00F8AE5E /* x48_x11.c */,
+				655E47DF0F94469C00F8AE5E /* x48_x11.h */,
+			);
+			name = Emulator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* i48 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "i48" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = i48;
+			productName = i48;
+			productReference = 1D6058910D05DD3D006BFB54 /* i48.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "i48" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* i48 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
+				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
+				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* i48AppDelegate.m in Sources */,
+				289233A60DB2D0840083E9F9 /* FlipsideView.m in Sources */,
+				289233A70DB2D0840083E9F9 /* MainView.m in Sources */,
+				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
+				289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */,
+				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
+				655E47E00F94469C00F8AE5E /* actions.c in Sources */,
+				655E47E30F94469C00F8AE5E /* device.c in Sources */,
+				655E47E40F94469C00F8AE5E /* disasm.c in Sources */,
+				655E47E60F94469C00F8AE5E /* emulate.c in Sources */,
+				655E47E70F94469C00F8AE5E /* errors.c in Sources */,
+				655E47E80F94469C00F8AE5E /* init.c in Sources */,
+				655E47E90F94469C00F8AE5E /* lcd.c in Sources */,
+				655E47EB0F94469C00F8AE5E /* memory.c in Sources */,
+				655E47ED0F94469C00F8AE5E /* options.c in Sources */,
+				655E47EE0F94469C00F8AE5E /* register.c in Sources */,
+				655E47EF0F94469C00F8AE5E /* resources.c in Sources */,
+				655E47F00F94469C00F8AE5E /* romio.c in Sources */,
+				655E47F10F94469C00F8AE5E /* rpl.c in Sources */,
+				655E47F20F94469C00F8AE5E /* serial.c in Sources */,
+				655E47F30F94469C00F8AE5E /* timer.c in Sources */,
+				655E47F40F94469C00F8AE5E /* version.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = i48_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = i48;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = i48_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = i48;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.2.1;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.2.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "i48" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "i48" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
