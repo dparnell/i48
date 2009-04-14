@@ -69,12 +69,9 @@
 #ifdef SUNOS
 #include <memory.h>
 #endif
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 
 #include "hp48.h"
 #include "hp48_emu.h"
-#include "x48_x11.h"
 #include "annunc.h"
 #include "device.h"
 
@@ -89,7 +86,7 @@ display_t display;
 unsigned char disp_buf[DISP_ROWS][NIBS_PER_BUFFER_ROW];
 unsigned char lcd_buffer[DISP_ROWS][NIBS_PER_BUFFER_ROW];
 
-Pixmap nibble_maps[16];
+// Pixmap nibble_maps[16];
 
 unsigned char nibbles[16][2] =
 {
@@ -123,8 +120,10 @@ init_nibble_maps()
   int i;
 
   for (i = 0; i < 16; i++) {
+/*	  
     nibble_maps[i] = XCreateBitmapFromData(dpy, disp.win,
                                            (char *)nibbles[i], 8, 2);
+*/ 
   }
 #ifdef HAVE_XSHM
   if (shm_flag) {
@@ -178,14 +177,14 @@ init_display()
 
   display.disp_start = (saturn.disp_addr & 0xffffe);
   display.offset = (saturn.disp_io & 0x7);
-  disp.offset = 2 * display.offset;
+//  disp.offset = 2 * display.offset;
 
   display.lines = (saturn.line_count & 0x3f);
   if (display.lines == 0)
     display.lines = 63;
-  disp.lines = 2 * display.lines;
-  if (disp.lines < 110)
-    disp.lines = 110;
+//  disp.lines = 2 * display.lines;
+//  if (disp.lines < 110)
+//    disp.lines = 110;
 
   if (display.offset > 3)
     display.nibs_per_line = (NIBBLES_PER_ROW+saturn.line_offset+2) & 0xfff;
@@ -219,15 +218,17 @@ int r;
 int val;
 #endif
 {
+/*	
   int x, y;
 
   x = (c * 8) + 5;
   if (r <= display.lines)
     x -= disp.offset;
   y = (r * 2) + 20;
+*/ 
   val &= 0x0f;
   if (val != lcd_buffer[r][c]) {
-    XCopyPlane(dpy, nibble_maps[val], disp.win, disp.gc, 0, 0, 8, 2, x, y, 1);
+//    XCopyPlane(dpy, nibble_maps[val], disp.win, disp.gc, 0, 0, 8, 2, x, y, 1);
     lcd_buffer[r][c] = val;
   }
 }
@@ -273,11 +274,6 @@ update_display()
   word_20 data_addr, data_addr_2;
 #endif
 
-  if (!disp.mapped)
-    {
-      refresh_icon();
-      return;
-    }
   if (display.on) {
     addr = display.disp_start;
 #ifdef HAVE_XSHM
@@ -377,7 +373,7 @@ redraw_display(void)
 redraw_display()
 #endif
 {
-  XClearWindow(dpy, disp.win);
+//  XClearWindow(dpy, disp.win);
   memset(disp_buf, 0, sizeof(disp_buf));
   memset(lcd_buffer, 0, sizeof(lcd_buffer));
   update_display();
@@ -493,7 +489,7 @@ struct ann_struct {
   unsigned int   width;
   unsigned int   height;
   unsigned char *bits;
-  Pixmap         pixmap;
+//  Pixmap         pixmap;
 } ann_tbl[] = {
   { ANN_LEFT, 16, 4, ann_left_width, ann_left_height, ann_left_bits },
   { ANN_RIGHT, 61, 4, ann_right_width, ann_right_height, ann_right_bits },
@@ -524,17 +520,21 @@ draw_annunc()
     {
       if ((ann_tbl[i].bit & val) == ann_tbl[i].bit)
         {
+/*			
           XCopyPlane(dpy, ann_tbl[i].pixmap, disp.win, disp.gc, 0, 0,
                      ann_tbl[i].width, ann_tbl[i].height,
                      ann_tbl[i].x, ann_tbl[i].y, 1);
+*/ 
         }
       else
         {
+/*			
           XClearArea(dpy, disp.win, ann_tbl[i].x, ann_tbl[i].y,
                      ann_tbl[i].width, ann_tbl[i].height, False);
+ */
         }
     }
-  refresh_icon();
+//  refresh_icon();
 }
 
 void
@@ -558,10 +558,12 @@ init_annunc()
   int i;
  
   for (i = 0; ann_tbl[i].bit; i++) {
+/*	  
     ann_tbl[i].pixmap = XCreateBitmapFromData(dpy, disp.win,
                                               (char *)ann_tbl[i].bits,
                                 	      ann_tbl[i].width,
                                               ann_tbl[i].height);
+*/ 
   }
 }
 

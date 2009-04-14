@@ -49,7 +49,7 @@
 
 #include "version.h"
 #include "constants.h"
-#include "resources.h"
+#include "global.h"
 
 void
 #ifdef __FunctionProto__

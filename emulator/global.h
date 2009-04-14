@@ -66,6 +66,18 @@
 #endif
 #endif
 
+extern char  *progname;
+extern struct saturn_t saturn;
+extern int	    verbose;
+extern int	    quiet;
+extern int     useSerial;
+extern char   *serialLine;
+extern int     initialize;
+extern int     resetOnStartup;
+extern char   *romFileName;
+extern char   *homeDirectory;
+
+
 /*
  * If we are running Linux, `linux' will be defined by gcc.
  */

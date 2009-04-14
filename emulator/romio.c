@@ -31,7 +31,6 @@
 #include <sys/stat.h>
 
 #include "global.h"
-#include "resources.h"
 #include "romio.h"
 
 unsigned int opt_gx = 0;

@@ -86,9 +86,7 @@
 #include "hp48.h"
 #include "hp48_emu.h"
 #include "device.h"
-#include "x48_x11.h"
 #include "timer.h"
-#include "debugger.h"
 #include "romio.h"
 
 static int	interrupt_called = 0;
@@ -609,10 +607,7 @@ do_shutdown()
           saturn.PC, saturn.t2_ctrl, saturn.timer2);
 #endif
 
-  if (in_debugger)
-    wake = 1;
-  else
-    wake = 0;
+  wake = 0;
 
   alarms = 0;
 
@@ -636,10 +631,10 @@ do_shutdown()
       set_t1 = ticks.t1_ticks;
 
       interrupt_called = 0;
-      if (GetEvent()) {
+//      if (GetEvent()) {
         if (interrupt_called)
           wake = 1;
-      }
+//      }
 
       if (saturn.timer2 <= 0)
         {
@@ -680,11 +675,6 @@ do_shutdown()
       alarms++;
 
     }
-
-    if (enter_debugger)
-      {
-        wake = 1;
-      }
 
   } while (wake == 0);
 

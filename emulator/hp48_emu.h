@@ -61,12 +61,7 @@
 
 #include "global.h"
 
-#include <X11/Xlib.h>
-
 #include "hp48.h"
-extern Display *dpy;
-extern Window dispW;
-extern GC gc;
 
 extern void		push_return_addr __ProtoType__((long addr));
 extern long		pop_return_addr __ProtoType__((void));

@@ -20,22 +20,20 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
-		655E47E00F94469C00F8AE5E /* actions.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47B10F94469C00F8AE5E /* actions.c */; };
 		655E47E30F94469C00F8AE5E /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BA0F94469C00F8AE5E /* device.c */; };
 		655E47E40F94469C00F8AE5E /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
 		655E47E60F94469C00F8AE5E /* emulate.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BF0F94469C00F8AE5E /* emulate.c */; };
-		655E47E70F94469C00F8AE5E /* errors.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C00F94469C00F8AE5E /* errors.c */; };
 		655E47E80F94469C00F8AE5E /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C80F94469C00F8AE5E /* init.c */; };
 		655E47E90F94469C00F8AE5E /* lcd.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C90F94469C00F8AE5E /* lcd.c */; };
 		655E47EB0F94469C00F8AE5E /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47CB0F94469C00F8AE5E /* memory.c */; };
-		655E47ED0F94469C00F8AE5E /* options.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47CE0F94469C00F8AE5E /* options.c */; };
 		655E47EE0F94469C00F8AE5E /* register.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D00F94469C00F8AE5E /* register.c */; };
-		655E47EF0F94469C00F8AE5E /* resources.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D10F94469C00F8AE5E /* resources.c */; };
 		655E47F00F94469C00F8AE5E /* romio.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D30F94469C00F8AE5E /* romio.c */; };
 		655E47F10F94469C00F8AE5E /* rpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D50F94469C00F8AE5E /* rpl.c */; };
 		655E47F20F94469C00F8AE5E /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D70F94469C00F8AE5E /* serial.c */; };
 		655E47F30F94469C00F8AE5E /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D90F94469C00F8AE5E /* timer.c */; };
 		655E47F40F94469C00F8AE5E /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47DB0F94469C00F8AE5E /* version.c */; };
+		655E488B0F94535500F8AE5E /* actions.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47B10F94469C00F8AE5E /* actions.c */; };
+		655E4A160F94B29E00F8AE5E /* hp48.rom in Resources */ = {isa = PBXBuildFile; fileRef = 655E4A150F94B29E00F8AE5E /* hp48.rom */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,8 +65,6 @@
 		655E47B50F94469C00F8AE5E /* checkrom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = checkrom.c; path = emulator/checkrom.c; sourceTree = "<group>"; };
 		655E47B60F94469C00F8AE5E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = emulator/config.h; sourceTree = "<group>"; };
 		655E47B70F94469C00F8AE5E /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = emulator/constants.h; sourceTree = "<group>"; };
-		655E47B80F94469C00F8AE5E /* debugger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debugger.c; path = emulator/debugger.c; sourceTree = "<group>"; };
-		655E47B90F94469C00F8AE5E /* debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debugger.h; path = emulator/debugger.h; sourceTree = "<group>"; };
 		655E47BA0F94469C00F8AE5E /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device.c; path = emulator/device.c; sourceTree = "<group>"; };
 		655E47BB0F94469C00F8AE5E /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = device.h; path = emulator/device.h; sourceTree = "<group>"; };
 		655E47BC0F94469C00F8AE5E /* disasm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = disasm.c; path = emulator/disasm.c; sourceTree = "<group>"; };
@@ -92,8 +88,6 @@
 		655E47CE0F94469C00F8AE5E /* options.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = options.c; path = emulator/options.c; sourceTree = "<group>"; };
 		655E47CF0F94469C00F8AE5E /* options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = options.h; path = emulator/options.h; sourceTree = "<group>"; };
 		655E47D00F94469C00F8AE5E /* register.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = register.c; path = emulator/register.c; sourceTree = "<group>"; };
-		655E47D10F94469C00F8AE5E /* resources.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = resources.c; path = emulator/resources.c; sourceTree = "<group>"; };
-		655E47D20F94469C00F8AE5E /* resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resources.h; path = emulator/resources.h; sourceTree = "<group>"; };
 		655E47D30F94469C00F8AE5E /* romio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = romio.c; path = emulator/romio.c; sourceTree = "<group>"; };
 		655E47D40F94469C00F8AE5E /* romio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = romio.h; path = emulator/romio.h; sourceTree = "<group>"; };
 		655E47D50F94469C00F8AE5E /* rpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rpl.c; path = emulator/rpl.c; sourceTree = "<group>"; };
@@ -104,9 +98,7 @@
 		655E47DA0F94469C00F8AE5E /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = timer.h; path = emulator/timer.h; sourceTree = "<group>"; };
 		655E47DB0F94469C00F8AE5E /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = emulator/version.c; sourceTree = "<group>"; };
 		655E47DC0F94469C00F8AE5E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = emulator/version.h; sourceTree = "<group>"; };
-		655E47DD0F94469C00F8AE5E /* X48.ad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = X48.ad.h; path = emulator/X48.ad.h; sourceTree = "<group>"; };
-		655E47DE0F94469C00F8AE5E /* x48_x11.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = x48_x11.c; path = emulator/x48_x11.c; sourceTree = "<group>"; };
-		655E47DF0F94469C00F8AE5E /* x48_x11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x48_x11.h; path = emulator/x48_x11.h; sourceTree = "<group>"; };
+		655E4A150F94B29E00F8AE5E /* hp48.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = hp48.rom; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +185,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				655E4A150F94B29E00F8AE5E /* hp48.rom */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
@@ -221,8 +214,6 @@
 				655E47B50F94469C00F8AE5E /* checkrom.c */,
 				655E47B60F94469C00F8AE5E /* config.h */,
 				655E47B70F94469C00F8AE5E /* constants.h */,
-				655E47B80F94469C00F8AE5E /* debugger.c */,
-				655E47B90F94469C00F8AE5E /* debugger.h */,
 				655E47BA0F94469C00F8AE5E /* device.c */,
 				655E47BB0F94469C00F8AE5E /* device.h */,
 				655E47BC0F94469C00F8AE5E /* disasm.c */,
@@ -246,8 +237,6 @@
 				655E47CE0F94469C00F8AE5E /* options.c */,
 				655E47CF0F94469C00F8AE5E /* options.h */,
 				655E47D00F94469C00F8AE5E /* register.c */,
-				655E47D10F94469C00F8AE5E /* resources.c */,
-				655E47D20F94469C00F8AE5E /* resources.h */,
 				655E47D30F94469C00F8AE5E /* romio.c */,
 				655E47D40F94469C00F8AE5E /* romio.h */,
 				655E47D50F94469C00F8AE5E /* rpl.c */,
@@ -258,9 +247,6 @@
 				655E47DA0F94469C00F8AE5E /* timer.h */,
 				655E47DB0F94469C00F8AE5E /* version.c */,
 				655E47DC0F94469C00F8AE5E /* version.h */,
-				655E47DD0F94469C00F8AE5E /* X48.ad.h */,
-				655E47DE0F94469C00F8AE5E /* x48_x11.c */,
-				655E47DF0F94469C00F8AE5E /* x48_x11.h */,
 			);
 			name = Emulator;
 			sourceTree = "<group>";
@@ -317,6 +303,7 @@
 				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
+				655E4A160F94B29E00F8AE5E /* hp48.rom in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,22 +321,19 @@
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
-				655E47E00F94469C00F8AE5E /* actions.c in Sources */,
 				655E47E30F94469C00F8AE5E /* device.c in Sources */,
 				655E47E40F94469C00F8AE5E /* disasm.c in Sources */,
 				655E47E60F94469C00F8AE5E /* emulate.c in Sources */,
-				655E47E70F94469C00F8AE5E /* errors.c in Sources */,
 				655E47E80F94469C00F8AE5E /* init.c in Sources */,
 				655E47E90F94469C00F8AE5E /* lcd.c in Sources */,
 				655E47EB0F94469C00F8AE5E /* memory.c in Sources */,
-				655E47ED0F94469C00F8AE5E /* options.c in Sources */,
 				655E47EE0F94469C00F8AE5E /* register.c in Sources */,
-				655E47EF0F94469C00F8AE5E /* resources.c in Sources */,
 				655E47F00F94469C00F8AE5E /* romio.c in Sources */,
 				655E47F10F94469C00F8AE5E /* rpl.c in Sources */,
 				655E47F20F94469C00F8AE5E /* serial.c in Sources */,
 				655E47F30F94469C00F8AE5E /* timer.c in Sources */,
 				655E47F40F94469C00F8AE5E /* version.c in Sources */,
+				655E488B0F94535500F8AE5E /* actions.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

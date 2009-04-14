@@ -9,7 +9,8 @@
 #import "RootViewController.h"
 #import "MainViewController.h"
 #import "FlipsideViewController.h"
-
+#import "hp48.h"
+#import "global.h"
 
 @implementation RootViewController
 
@@ -18,9 +19,26 @@
 @synthesize mainViewController;
 @synthesize flipsideViewController;
 
+char  *progname = "i48";
+struct saturn_t saturn;
+int	    verbose = 1;
+int	    quiet = 0;
+int     useSerial = 0;
+char   *serialLine = nil;
+int     initialize = 0;
+int     resetOnStartup = 0;
+char   *romFileName = "rom";
+char   *homeDirectory = nil;
+
 
 - (void)viewDidLoad {
-    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    homeDirectory = strdup([documentsDirectory cStringUsingEncoding: NSUTF8StringEncoding]);
+	
+	romFileName = (char*)[[[NSBundle mainBundle] pathForResource: @"hp48" ofType: @"rom"] cStringUsingEncoding: NSUTF8StringEncoding];
+	init_emulator();
+	
     [super viewDidLoad];
     MainViewController *viewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
     self.mainViewController = viewController;

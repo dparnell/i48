@@ -46,7 +46,6 @@
 #include <time.h>
 
 #include "timer.h"
-#include "debugger.h"
 #include "romio.h"
 
 /* #define DEBUG_TIMER 1 */
@@ -625,7 +624,7 @@ get_t1_t2()
 
   sub_64(stop, &access_time);
 
-  if (adj_time_pending || in_debugger)
+  if (adj_time_pending)
     {
       /*
        * We have been inside an interrupt for very long, maybe

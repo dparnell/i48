@@ -81,9 +81,7 @@
 #include "hp48.h"
 #include "device.h"
 #include "hp48_emu.h"
-#include "x48_x11.h"
 #include "romio.h"
-#include "resources.h"
 #include "mmu.h"
 
 extern int   device_check;
@@ -159,7 +157,7 @@ int val;
         saturn.disp_io = val;
         display.on = (val & 0x8) >> 3;
         display.offset = val & 0x7;
-        disp.offset = 2 * display.offset;
+//        disp.offset = 2 * display.offset;
         if (display.offset > 3)
           display.nibs_per_line =
                   (NIBBLES_PER_ROW+saturn.line_offset+2) & 0xfff;
@@ -368,7 +366,7 @@ int val;
         display.lines = saturn.line_count & 0x3f;
 	if (display.lines == 0)
           display.lines = 63;
-        disp.lines = 2 * display.lines;
+//        disp.lines = 2 * display.lines;
         display.disp_end = display.disp_start +
 		           (display.nibs_per_line * (display.lines + 1));
         device.display_touched = DISP_INSTR_OFF;
@@ -670,7 +668,7 @@ int val;
 #endif
       return;
   }
-  if (device.display_touched || !disp.mapped)
+  if (device.display_touched)
     return;
   if (addr >= display.disp_start && addr < display.disp_end)
     {
@@ -938,7 +936,7 @@ int val;
 #endif
         return;
     }
-  if (device.display_touched || !disp.mapped)
+  if (device.display_touched)
     return;
   if (addr >= display.disp_start && addr < display.disp_end)
     {

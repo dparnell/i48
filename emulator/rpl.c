@@ -43,13 +43,13 @@
 #include "hp48.h"
 #include "hp48_emu.h"
 #include "rpl.h"
-#include "debugger.h"
 #include "append.h"
 #include "disasm.h"
 #include "romio.h"
 #define DEFINE_TRANS_TABLE 1
 #include "hp48char.h"
 #undef DEFINE_TRANS_TABLE
+#include <string.h>
 
 struct objfunc {
   char    *name;

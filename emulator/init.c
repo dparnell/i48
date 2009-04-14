@@ -83,7 +83,6 @@
 #include "hp48_emu.h"
 #include "device.h"
 #include "version.h"
-#include "resources.h"
 #include "romio.h"
 
 #define X48_MAGIC 0x48503438

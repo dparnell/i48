@@ -57,7 +57,6 @@
 #include "hp48_emu.h"
 #include "device.h"
 #include "timer.h"
-#include "x48_x11.h"
 
 extern int device_check;
 
@@ -79,7 +78,7 @@ check_devices()
   }
   if (device.contrast_touched) {
     device.contrast_touched = 0;
-    adjust_contrast(display.contrast);
+//    adjust_contrast(display.contrast);
   }
   if (device.ann_touched) {
     device.ann_touched = 0;

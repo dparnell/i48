@@ -52,8 +52,6 @@
 #include "hp48_emu.h"
 #include "device.h"
 #include "timer.h"
-#include "x48_x11.h"
-#include "debugger.h"
 
 #if 0
 #define DEBUG_TIMER
@@ -2182,9 +2180,9 @@ step_instruction()
       } else if(op2 == 0x004) {
         op3 = read_nibbles(saturn.PC + 4, 1);
         saturn.PC += 5;
-        if (op3 != 0) {
-          enter_debugger |= TRAP_INSTRUCTION;
-	  return 1;
+		if (op3 != 0) {
+//          enter_debugger |= TRAP_INSTRUCTION;		  
+		  return 1;
         }
       } else {
         if (op2 & 0x800)
@@ -2207,7 +2205,7 @@ step_instruction()
   }
   instructions++;
   if (stop) {
-    enter_debugger |= ILLEGAL_INSTRUCTION;
+//    enter_debugger |= ILLEGAL_INSTRUCTION;
   }
   return stop;
 }
@@ -2415,7 +2413,7 @@ schedule()
 #ifdef HAVE_XSHM
     if (disp.display_update) refresh_display();
 #endif
-    GetEvent();
+//    GetEvent();
   }
 }
 
@@ -2466,7 +2464,7 @@ emulate()
       {
         schedule();
       }
-  } while (!enter_debugger);
+  } while (1);
 
   return 0;
 }
