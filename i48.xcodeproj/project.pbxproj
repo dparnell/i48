@@ -43,6 +43,17 @@
 		65FB18220F9B492500811E20 /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		65F81070101DC8BF00B94E0F /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			fileType = sourcecode.c;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* i48AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48AppDelegate.h; sourceTree = "<group>"; };
@@ -282,6 +293,7 @@
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 			);
 			buildRules = (
+				65F81070101DC8BF00B94E0F /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -370,6 +382,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -377,6 +391,8 @@
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = i48;
+				PROVISIONING_PROFILE = "806757EB-6727-486B-88F5-E721D2B7D742";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806757EB-6727-486B-88F5-E721D2B7D742";
 			};
 			name = Debug;
 		};
@@ -384,11 +400,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = i48;
+				PROVISIONING_PROFILE = "806757EB-6727-486B-88F5-E721D2B7D742";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806757EB-6727-486B-88F5-E721D2B7D742";
 			};
 			name = Release;
 		};

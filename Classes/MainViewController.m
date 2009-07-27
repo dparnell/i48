@@ -70,9 +70,7 @@ display_t display;
 
 unsigned char disp_buf[DISP_ROWS][NIBS_PER_BUFFER_ROW];
 
-void init_display() {
-	NSLog(@"init_display");
-	
+void init_display() {	
 	display.on = (int)(saturn.disp_io & 0x8) >> 3;
 	
 	display.disp_start = (saturn.disp_addr & 0xffffe);
@@ -142,7 +140,7 @@ static void lcd_display_nibbles(int id, int x, int y) {
 				*p2 = 0xff;
 				p2++;
 				*p2 = 0xff;
-				p1++;
+				p2++;
 			} else {
 				*p1 = 0x00;
 				p1++;
