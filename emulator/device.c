@@ -69,7 +69,7 @@ check_devices(void)
 check_devices()
 #endif
 {
-  if (device.display_touched > 0 && device.display_touched-- == 1) {
+	if (device.display_touched && device.display_touched-- == 1) {
     device.display_touched = 0;
     update_display();
   }

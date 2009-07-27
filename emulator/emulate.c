@@ -2413,7 +2413,7 @@ schedule()
 #ifdef HAVE_XSHM
     if (disp.display_update) refresh_display();
 #endif
-//    GetEvent();
+    GetEvent();
   }
 }
 

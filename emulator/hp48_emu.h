@@ -71,6 +71,7 @@ extern void		init_annunc __ProtoType__((void));
 extern void		init_saturn __ProtoType__((void));
 
 extern void		check_timer __ProtoType__((void));
+extern void		pause_emulation __ProtoType__((void));
 
 extern void		register_to_status __ProtoType__((unsigned char *r));
 extern void		status_to_register __ProtoType__((unsigned char *r));

@@ -610,13 +610,12 @@ do_shutdown()
   wake = 0;
 
   alarms = 0;
-
+	interrupt_called = 0;
   do {
 
-    pause();
+    pause_emulation();
 
     if (got_alarm) {
-
       got_alarm = 0;
 
 #ifdef HAVE_XSHM
@@ -631,10 +630,10 @@ do_shutdown()
       set_t1 = ticks.t1_ticks;
 
       interrupt_called = 0;
-//      if (GetEvent()) {
+      if (GetEvent()) {
         if (interrupt_called)
           wake = 1;
-//      }
+      }
 
       if (saturn.timer2 <= 0)
         {
@@ -677,7 +676,6 @@ do_shutdown()
     }
 
   } while (wake == 0);
-
   stop_timer(IDLE_TIMER);
   start_timer(RUN_TIMER);
 }

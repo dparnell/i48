@@ -273,7 +273,7 @@ update_display()
   int val, line_pad, line_length;
   word_20 data_addr, data_addr_2;
 #endif
-
+printf("update_display\n");
   if (display.on) {
     addr = display.disp_start;
 #ifdef HAVE_XSHM
@@ -373,6 +373,7 @@ redraw_display(void)
 redraw_display()
 #endif
 {
+	printf("redraw_display\n");
 //  XClearWindow(dpy, disp.win);
   memset(disp_buf, 0, sizeof(disp_buf));
   memset(lcd_buffer, 0, sizeof(lcd_buffer));
@@ -556,7 +557,9 @@ init_annunc()
 #endif
 {
   int i;
- 
+
+	printf("init_annunc\n");
+	
   for (i = 0; ann_tbl[i].bit; i++) {
 /*	  
     ann_tbl[i].pixmap = XCreateBitmapFromData(dpy, disp.win,
