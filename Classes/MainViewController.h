@@ -14,8 +14,7 @@
 	CGContextRef lcdContext;
 
 	NSThread* emulatorThread;
-	BOOL fRunning;
-	
+
 	UIImageView* _lcd;
 	
     UIImageView* _ann1;

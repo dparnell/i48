@@ -32,13 +32,15 @@ int	    verbose = 1;
 int	    quiet = 0;
 int     useSerial = 0;
 char   *serialLine = nil;
-int     initialize = 1;
-int     resetOnStartup = 1;
+int     initialize = 0;
+int     resetOnStartup = 0;
 char   *romFileName = "rom";
 char   *homeDirectory = nil;
 
 static BOOL fKeyInterrupt;
 static BOOL dirty = NO;
+BOOL fRunning = NO;
+
 
 static unsigned char * display_buffer = nil;
 
@@ -56,11 +58,17 @@ int GetEvent() {
 void pause_emulation() {
 	if(dirty) {
 		dirty = NO;
-		NSLog(@"dirty");
+//		NSLog(@"dirty");
 		update_display();
 	}
-	[NSThread sleepForTimeInterval: 0.02];
-	got_alarm = 1;
+	
+	if(!fRunning) {
+		exit_emulator();
+		[NSThread exit]; 
+	} else {
+		[NSThread sleepForTimeInterval: 0.02];
+		got_alarm = 1;
+	}
 }
 
 display_t display;
@@ -179,10 +187,10 @@ draw_row(long addr, int row)
 		line_length += 2;
 	for (i = 0; i < line_length; i++) {
 		v = read_nibble(addr + i);
-		if (v != disp_buf[row][i]) {
+//		if (v != disp_buf[row][i]) {
 			disp_buf[row][i] = v;
 			draw_nibble(i, row, v);
-		}
+//		}
 	}
 	
 }
@@ -255,11 +263,11 @@ void menu_draw_nibble(word_20 addr, word_4 val) {
 	offset = (addr - display.menu_start);
     x = offset % NIBBLES_PER_ROW;
     y = display.lines + (offset / NIBBLES_PER_ROW) + 1;
-    if (val != disp_buf[y][x]) {
+//    if (val != disp_buf[y][x]) {
 		disp_buf[y][x] = val;
 		dirty = YES;
 		draw_nibble(x, y, val);
-    }
+//    }
 }
 
 void disp_draw_nibble(word_20 addr, word_4 val) {	
@@ -275,18 +283,18 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 		y = offset / display.nibs_per_line;
 		if (y < 0 || y > 63)
 			return;
-		if (val != disp_buf[y][x]) {
+//		if (val != disp_buf[y][x]) {
 			dirty = YES;
 			disp_buf[y][x] = val;
 			draw_nibble(x, y, val);
-		}
+//		}
 	} else {
 		for (y = 0; y < display.lines; y++) {
-			if (val != disp_buf[y][x]) {
+//			if (val != disp_buf[y][x]) {
 				dirty = YES;
 				disp_buf[y][x] = val;
 				draw_nibble(x, y, val);
-			}
+//			}
 		}
 	}
 }
@@ -296,24 +304,13 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	fRunning = YES;
 	fKeyInterrupt = NO;
 	
-	while(fRunning) {
-		NSLog(@"calling emulate");
-		emulate();
-	}
-	exit_emulator();
+//	NSLog(@"calling emulate");
+	emulate();
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {		
-/*		
-		struct itimerval it;
-		
-		it.it_interval.tv_sec = 0;
-		it.it_interval.tv_usec = 20000;
-		it.it_value.tv_sec = 0;
-		it.it_value.tv_usec = 20000;
-		setitimer(ITIMER_REAL, &it, (struct itimerval *)0);
-*/
+
     }
     return self;
 }
@@ -334,9 +331,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	CGColorSpaceRef colorspace = CGColorSpaceCreateCalibratedGray(fgColor, bgColor, 1.0); 
 	lcdContext = CGBitmapContextCreate(_display_buffer, NIBBLES_PER_ROW*8, DISP_ROWS*2, 8, NIBBLES_PER_ROW*8, colorspace, kCGImageAlphaNone);
 	CGColorSpaceRelease(colorspace);
-	NSLog(@"lcdContext = %p", lcdContext);
 	display_buffer = CGBitmapContextGetData(lcdContext);
-	NSLog(@"display_buffer = %p", display_buffer);
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -364,6 +359,12 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 //	[self performSelectorInBackground: @selector(emulatorThread:) withObject: nil];	
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+	fRunning = NO;
+	while(![emulatorThread isFinished]) {
+		[NSThread sleepForTimeInterval: 0.1];
+	}
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations

@@ -14,7 +14,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
+    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+	NSData* htmlData = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"about" ofType: @"html"]];
+	NSString* html = [[[NSString alloc] initWithData: htmlData encoding: NSUTF8StringEncoding] autorelease];
+	[webView loadHTMLString: html baseURL: nil];
 }
 
 
