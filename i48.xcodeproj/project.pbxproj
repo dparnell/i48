@@ -32,7 +32,6 @@
 		655E47F40F94469C00F8AE5E /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47DB0F94469C00F8AE5E /* version.c */; };
 		655E488B0F94535500F8AE5E /* actions.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47B10F94469C00F8AE5E /* actions.c */; };
 		655E4A160F94B29E00F8AE5E /* hp48.rom in Resources */ = {isa = PBXBuildFile; fileRef = 655E4A150F94B29E00F8AE5E /* hp48.rom */; };
-		655E4A7B0F95F54600F8AE5E /* GWB_48G.png in Resources */ = {isa = PBXBuildFile; fileRef = 655E4A7A0F95F54600F8AE5E /* GWB_48G.png */; };
 		655E4AB60F97D4C300F8AE5E /* ann1.png in Resources */ = {isa = PBXBuildFile; fileRef = 655E4AB00F97D4C300F8AE5E /* ann1.png */; };
 		655E4AB70F97D4C300F8AE5E /* ann2.png in Resources */ = {isa = PBXBuildFile; fileRef = 655E4AB10F97D4C300F8AE5E /* ann2.png */; };
 		655E4AB80F97D4C300F8AE5E /* ann3.png in Resources */ = {isa = PBXBuildFile; fileRef = 655E4AB20F97D4C300F8AE5E /* ann3.png */; };
@@ -40,6 +39,7 @@
 		655E4ABA0F97D4C300F8AE5E /* ann5.png in Resources */ = {isa = PBXBuildFile; fileRef = 655E4AB40F97D4C300F8AE5E /* ann5.png */; };
 		655E4ABB0F97D4C300F8AE5E /* ann6.png in Resources */ = {isa = PBXBuildFile; fileRef = 655E4AB50F97D4C300F8AE5E /* ann6.png */; };
 		6570AA8C101C2B5C00275D68 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6570AA8B101C2B5C00275D68 /* icon.png */; };
+		65F810A1101F0E8D00B94E0F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F810A0101F0E8D00B94E0F /* background.png */; };
 		65FB18220F9B492500811E20 /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
 /* End PBXBuildFile section */
 
@@ -115,7 +115,6 @@
 		655E47DB0F94469C00F8AE5E /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = emulator/version.c; sourceTree = "<group>"; };
 		655E47DC0F94469C00F8AE5E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = emulator/version.h; sourceTree = "<group>"; };
 		655E4A150F94B29E00F8AE5E /* hp48.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = hp48.rom; sourceTree = "<group>"; };
-		655E4A7A0F95F54600F8AE5E /* GWB_48G.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GWB_48G.png; sourceTree = "<group>"; };
 		655E4AB00F97D4C300F8AE5E /* ann1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ann1.png; sourceTree = "<group>"; };
 		655E4AB10F97D4C300F8AE5E /* ann2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ann2.png; sourceTree = "<group>"; };
 		655E4AB20F97D4C300F8AE5E /* ann3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ann3.png; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		655E4AB40F97D4C300F8AE5E /* ann5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ann5.png; sourceTree = "<group>"; };
 		655E4AB50F97D4C300F8AE5E /* ann6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ann6.png; sourceTree = "<group>"; };
 		6570AA8B101C2B5C00275D68 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		65F810A0101F0E8D00B94E0F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +209,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65F810A0101F0E8D00B94E0F /* background.png */,
 				6570AA8B101C2B5C00275D68 /* icon.png */,
 				655E4AB00F97D4C300F8AE5E /* ann1.png */,
 				655E4AB10F97D4C300F8AE5E /* ann2.png */,
@@ -216,7 +217,6 @@
 				655E4AB30F97D4C300F8AE5E /* ann4.png */,
 				655E4AB40F97D4C300F8AE5E /* ann5.png */,
 				655E4AB50F97D4C300F8AE5E /* ann6.png */,
-				655E4A7A0F95F54600F8AE5E /* GWB_48G.png */,
 				655E4A150F94B29E00F8AE5E /* hp48.rom */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
@@ -335,7 +335,6 @@
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				655E4A160F94B29E00F8AE5E /* hp48.rom in Resources */,
-				655E4A7B0F95F54600F8AE5E /* GWB_48G.png in Resources */,
 				655E4AB60F97D4C300F8AE5E /* ann1.png in Resources */,
 				655E4AB70F97D4C300F8AE5E /* ann2.png in Resources */,
 				655E4AB80F97D4C300F8AE5E /* ann3.png in Resources */,
@@ -343,6 +342,7 @@
 				655E4ABA0F97D4C300F8AE5E /* ann5.png in Resources */,
 				655E4ABB0F97D4C300F8AE5E /* ann6.png in Resources */,
 				6570AA8C101C2B5C00275D68 /* icon.png in Resources */,
+				65F810A1101F0E8D00B94E0F /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

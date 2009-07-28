@@ -351,6 +351,16 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	[emulatorThread setName: @"Emulator Thread"];
 	[emulatorThread start];
 	
+	// connect up the event handlers
+	for(UIView* v in [self.view subviews]) {
+		if([v isKindOfClass: [UIButton class]]) {
+			UIButton* b = (UIButton*)v;
+			
+			[b addTarget: self action: @selector(buttonPressed:) forControlEvents: UIControlEventTouchDown];
+			[b addTarget: self action: @selector(buttonReleased:) forControlEvents: UIControlEventTouchUpInside];
+		}
+	}
+	
 //	[self performSelectorInBackground: @selector(emulatorThread:) withObject: nil];	
 }
 
@@ -374,7 +384,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 
 - (IBAction) buttonPressed:(UIButton*)sender {
 	int code = [[sender titleForState: UIControlStateDisabled] intValue];
-	NSLog(@"button %@ - %d pressed", [sender titleForState: UIControlStateNormal], code);
+//	NSLog(@"button %@ - %d pressed", [sender titleForState: UIControlStateNormal], code);
 	
 	int i, r, c;
 	
@@ -393,7 +403,8 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 //				do_kbd_int();
 			}
 			if ((saturn.keybuf.rows[r] & c)) {
-				fprintf(stderr, "bug\n");
+				NSLog(@"bug");
+//				fprintf(stderr, "bug\n");
 			}
 			saturn.keybuf.rows[r] |= c;
 		}
@@ -403,7 +414,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 
 - (IBAction) buttonReleased:(UIButton*)sender {
 	int code = [[sender titleForState: UIControlStateDisabled] intValue];
-	NSLog(@"button %@ - %d released", [sender titleForState: UIControlStateNormal], code);
+//	NSLog(@"button %@ - %d released", [sender titleForState: UIControlStateNormal], code);
 	
 	if (code == 0x8000) {
 		int i;
