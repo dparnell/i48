@@ -128,6 +128,9 @@ void draw_annunc() {
 	[instance performSelectorOnMainThread: @selector(draw_annunc:) withObject: nil waitUntilDone: YES];
 }
 
+#define BACKGROUND_PIXEL 0x00
+#define FOREGROUND_PIXEL 0xff
+
 static void lcd_display_nibbles(int id, int x, int y) {
 //	NSLog(@"%d %d %d", x, y, id);
 	unsigned char mask;
@@ -141,22 +144,22 @@ static void lcd_display_nibbles(int id, int x, int y) {
 		for (x1 = 3; x1 >= 0; x1--) {
 			
 			if (id & mask) {
-				*p1 = 0xff;
+				*p1 = FOREGROUND_PIXEL;
 				p1++;
-				*p1 = 0xff;
+				*p1 = FOREGROUND_PIXEL;
 				p1++;
-				*p2 = 0xff;
+				*p2 = FOREGROUND_PIXEL;
 				p2++;
-				*p2 = 0xff;
+				*p2 = FOREGROUND_PIXEL;
 				p2++;
 			} else {
-				*p1 = 0x00;
+				*p1 = BACKGROUND_PIXEL;
 				p1++;
-				*p1 = 0x00;
+				*p1 = BACKGROUND_PIXEL;
 				p1++;
-				*p2 = 0x00;
+				*p2 = BACKGROUND_PIXEL;
 				p2++;
-				*p2 = 0x00;
+				*p2 = BACKGROUND_PIXEL;
 				p2++;
 			}
 			
@@ -329,6 +332,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	
 	_display_buffer = malloc(NIBBLES_PER_ROW*8*DISP_ROWS*2*2);
 	CGColorSpaceRef colorspace = CGColorSpaceCreateCalibratedGray(fgColor, bgColor, 1.0); 
+
 	lcdContext = CGBitmapContextCreate(_display_buffer, NIBBLES_PER_ROW*8, DISP_ROWS*2, 8, NIBBLES_PER_ROW*8, colorspace, kCGImageAlphaNone);
 	CGColorSpaceRelease(colorspace);
 	display_buffer = CGBitmapContextGetData(lcdContext);
