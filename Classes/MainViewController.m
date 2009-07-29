@@ -138,7 +138,7 @@ static void lcd_display_nibbles(int id, int x, int y) {
 		unsigned char* p2 = p1 + NIBBLES_PER_ROW*8;
 		
 		mask = 0x01;
-		for (x1 = 7; x1 >= 0; x1--) {
+		for (x1 = 3; x1 >= 0; x1--) {
 			
 			if (id & mask) {
 				*p1 = 0xff;
