@@ -74,10 +74,6 @@ void pause_emulation() {
 display_t display;
 #define DISP_ROWS	       64
 
-#define NIBS_PER_BUFFER_ROW    (NIBBLES_PER_ROW+1)
-
-unsigned char disp_buf[DISP_ROWS][NIBS_PER_BUFFER_ROW];
-
 void init_display() {	
 	display.on = (int)(saturn.disp_io & 0x8) >> 3;
 	
@@ -105,8 +101,6 @@ void init_display() {
 	display.contrast |= ((saturn.disp_test & 0x1) << 4);
 	
 	display.annunc = saturn.annunc;
-	
-	memset(disp_buf, 0xf0, sizeof(disp_buf));
 }
 
 void init_annunc() {
@@ -190,17 +184,12 @@ draw_row(long addr, int row)
 		line_length += 2;
 	for (i = 0; i < line_length; i++) {
 		v = read_nibble(addr + i);
-//		if (v != disp_buf[row][i]) {
-			disp_buf[row][i] = v;
-			draw_nibble(i, row, v);
-//		}
+		draw_nibble(i, row, v);
 	}
 	
 }
 
 - (void) update_display {
-//	UIGraphicsPushContext(lcdContext);
-	
 	int i, j;
 	long addr;
 	static int old_offset = -1;
@@ -211,14 +200,10 @@ draw_row(long addr, int row)
 		addr = display.disp_start;
 		if (display.offset != old_offset) {
 			redraw_needed = YES;
-//			NSLog(@"HERE");
-			memset(disp_buf, 0xf0, (size_t)((display.lines+1) * NIBS_PER_BUFFER_ROW));
 			old_offset = display.offset;
 		}
 		if (display.lines != old_lines) {
 			redraw_needed = YES;
-//			NSLog(@"THERE");
-			memset(&disp_buf[56][0], 0xf0, (size_t)(8 * NIBS_PER_BUFFER_ROW));
 			old_lines = display.lines;
 		}
 		
@@ -236,8 +221,6 @@ draw_row(long addr, int row)
 			}
 		}
 	} else {
-//		NSLog(@"WHERE");
-		memset(disp_buf, 0xf0, sizeof(disp_buf));
 		for (i = 0; i < 64; i++) {
 			for (j = 0; j < NIBBLES_PER_ROW; j++) {
 				draw_nibble(j, i, 0x00);
@@ -246,7 +229,6 @@ draw_row(long addr, int row)
 	}
 	
 	dirty = NO;
-//	UIGraphicsPopContext();
 	
 	CGImageRef img = CGBitmapContextCreateImage(lcdContext);
 //	NSLog(@"img = %p", img);
@@ -254,7 +236,6 @@ draw_row(long addr, int row)
 }
 
 void update_display() {
-//	NSLog(@"update_display");
 	[instance performSelectorOnMainThread: @selector(update_display) withObject: nil waitUntilDone: YES];
 }
 
@@ -266,11 +247,8 @@ void menu_draw_nibble(word_20 addr, word_4 val) {
 	offset = (addr - display.menu_start);
     x = offset % NIBBLES_PER_ROW;
     y = display.lines + (offset / NIBBLES_PER_ROW) + 1;
-//    if (val != disp_buf[y][x]) {
-		disp_buf[y][x] = val;
-		dirty = YES;
-		draw_nibble(x, y, val);
-//    }
+	dirty = YES;
+	draw_nibble(x, y, val);
 }
 
 void disp_draw_nibble(word_20 addr, word_4 val) {	
@@ -286,18 +264,12 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 		y = offset / display.nibs_per_line;
 		if (y < 0 || y > 63)
 			return;
-//		if (val != disp_buf[y][x]) {
-			dirty = YES;
-			disp_buf[y][x] = val;
-			draw_nibble(x, y, val);
-//		}
+		dirty = YES;
+		draw_nibble(x, y, val);
 	} else {
+		dirty = YES;
 		for (y = 0; y < display.lines; y++) {
-//			if (val != disp_buf[y][x]) {
-				dirty = YES;
-				disp_buf[y][x] = val;
-				draw_nibble(x, y, val);
-//			}
+			draw_nibble(x, y, val);
 		}
 	}
 }
