@@ -941,10 +941,10 @@ FILE *fp;
   if (!read_16(fp, (word_16 *)&saturn.t1_tick)) return 0;
   if (!read_16(fp, (word_16 *)&saturn.t2_tick)) return 0;
   if (!read_32(fp, &saturn.i_per_s)) return 0;
-  if (!read_16(fp, &saturn.bank_switch)) return 0;
+  if (!read_16(fp, (word_16 *)&saturn.bank_switch)) return 0;
   for (i = 0; i < NR_MCTL; i++)
     {
-      if (!read_16(fp, &saturn.mem_cntl[i].unconfigured)) return 0;
+      if (!read_16(fp, (word_16 *)&saturn.mem_cntl[i].unconfigured)) return 0;
       if (!read_32(fp, &saturn.mem_cntl[i].config[0])) return 0;
       if (!read_32(fp, &saturn.mem_cntl[i].config[1])) return 0;
     }
@@ -1063,7 +1063,7 @@ const char *fname;
 {
   int ram_size;
 
-  if (!read_rom_file(romFileName, &saturn.rom, &rom_size))
+  if (!read_rom_file(romFileName, &saturn.rom, (int *)&rom_size))
     return 0;
   dev_memory_init();
 
@@ -1161,7 +1161,7 @@ read_files()
   saturn.rom = (word_4 *)NULL;
   strcpy(fnam, path);
   strcat(fnam, "rom");
-  if (!read_rom_file(fnam, &saturn.rom, &rom_size))
+  if (!read_rom_file(fnam, &saturn.rom, (int *)&rom_size))
     return 0;
 
   rom_is_new = 0;
@@ -1723,10 +1723,10 @@ write_files()
   write_16(fp, (word_16 *)&saturn.t1_tick);
   write_16(fp, (word_16 *)&saturn.t2_tick);
   write_32(fp, &saturn.i_per_s);
-  write_16(fp, &saturn.bank_switch);
+  write_16(fp, (word_16 *)&saturn.bank_switch);
   for (i = 0; i < NR_MCTL; i++)
     {
-      write_16(fp, &saturn.mem_cntl[i].unconfigured);
+      write_16(fp, (word_16 *)&saturn.mem_cntl[i].unconfigured);
       write_32(fp, &saturn.mem_cntl[i].config[0]);
       write_32(fp, &saturn.mem_cntl[i].config[1]);
     }
