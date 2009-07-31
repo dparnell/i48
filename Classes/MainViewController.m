@@ -45,6 +45,11 @@ BOOL fRunning = NO;
 static unsigned char * display_buffer = nil;
 
 int GetEvent() {
+	if(!fRunning) {
+		exit_emulator();
+		[NSThread exit]; 
+	}
+	
 	if(fKeyInterrupt) {
 		fKeyInterrupt = NO;
 		do_kbd_int();
@@ -62,17 +67,13 @@ void pause_emulation() {
 		update_display();
 	}
 	
-	if(!fRunning) {
-		exit_emulator();
-		[NSThread exit]; 
-	} else {
-		[NSThread sleepForTimeInterval: 0.02];
-		got_alarm = 1;
-	}
+	[NSThread sleepForTimeInterval: 0.02];
+	got_alarm = 1;
 }
 
 display_t display;
-#define DISP_ROWS	       64
+#define DISP_COLS 131
+#define DISP_ROWS 64
 
 void init_display() {	
 	display.on = (int)(saturn.disp_io & 0x8) >> 3;
@@ -122,41 +123,37 @@ void draw_annunc() {
 	[instance performSelectorOnMainThread: @selector(draw_annunc:) withObject: nil waitUntilDone: YES];
 }
 
-#define BACKGROUND_PIXEL 0x00
-#define FOREGROUND_PIXEL 0xff
+#define BACKGROUND_PIXEL 0x5CDDCA
+#define FOREGROUND_PIXEL 0x000000
 
+/*
+ float fgColor[] = {0.0f, 0.0f, 0.0f};
+ float bgColor[] = {202.0f/255.0f, 221.0f/255.0f, 92.0f/255.0f};
+
+ */
 static void lcd_display_nibbles(int id, int x, int y) {
 //	NSLog(@"%d %d %d", x, y, id);
 	unsigned char mask;
-	int x1;
+	int i, limit;
 	
-	if(display_buffer) {
-		unsigned char* p1 = display_buffer + ((y*2)*NIBBLES_PER_ROW*8)+x*2;
-		unsigned char* p2 = p1 + NIBBLES_PER_ROW*8;
+	if(display_buffer && x<=128) {
+		unsigned int* p = (unsigned int*)(display_buffer + (y*DISP_COLS*4)+x*4);
 		
+		if(x<127) {
+			limit = 4;
+		} else {
+			limit = 3;
+		}
 		mask = 0x01;
-		for (x1 = 3; x1 >= 0; x1--) {
+		for (i = limit; i>0; i--) {
 			
 			if (id & mask) {
-				*p1 = FOREGROUND_PIXEL;
-				p1++;
-				*p1 = FOREGROUND_PIXEL;
-				p1++;
-				*p2 = FOREGROUND_PIXEL;
-				p2++;
-				*p2 = FOREGROUND_PIXEL;
-				p2++;
+				*p = FOREGROUND_PIXEL;
 			} else {
-				*p1 = BACKGROUND_PIXEL;
-				p1++;
-				*p1 = BACKGROUND_PIXEL;
-				p1++;
-				*p2 = BACKGROUND_PIXEL;
-				p2++;
-				*p2 = BACKGROUND_PIXEL;
-				p2++;
+				*p = BACKGROUND_PIXEL;
 			}
 			
+			p++;
 			mask = mask << 1;
 		}
 	}	
@@ -298,14 +295,11 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	
 	instance = self;
 	memset(&saturn, 0, sizeof(saturn));
-	
-	float fgColor[] = {0.0f, 0.0f, 0.0f};
-	float bgColor[] = {202.0f/255.0f, 221.0f/255.0f, 92.0f/255.0f};
-	
-	_display_buffer = malloc(NIBBLES_PER_ROW*8*DISP_ROWS*2*2);
-	CGColorSpaceRef colorspace = CGColorSpaceCreateCalibratedGray(fgColor, bgColor, 1.0); 
+		
+	_display_buffer = malloc(DISP_COLS*4*DISP_ROWS);
+	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
 
-	lcdContext = CGBitmapContextCreate(_display_buffer, NIBBLES_PER_ROW*8, DISP_ROWS*2, 8, NIBBLES_PER_ROW*8, colorspace, kCGImageAlphaNone);
+	lcdContext = CGBitmapContextCreate(_display_buffer, DISP_COLS, DISP_ROWS, 8, DISP_COLS*4, colorspace, kCGImageAlphaNoneSkipLast);
 	CGColorSpaceRelease(colorspace);
 	display_buffer = CGBitmapContextGetData(lcdContext);
 	
