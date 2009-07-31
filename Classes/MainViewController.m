@@ -325,11 +325,12 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 			[b addTarget: self action: @selector(buttonReleased:) forControlEvents: UIControlEventTouchUpInside];
 		}
 	}
-	
+
+	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(timeToDie:) name: UIApplicationWillTerminateNotification object: nil];
 //	[self performSelectorInBackground: @selector(emulatorThread:) withObject: nil];	
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)timeToDie:(id)dummy {
 	fRunning = NO;
 	while(![emulatorThread isFinished]) {
 		[NSThread sleepForTimeInterval: 0.1];
