@@ -85,6 +85,11 @@ int *size;
     {
       *size = 2 * st.st_size;
     }
+  else if (four[1] = 0x49)
+    {
+      fprintf(stderr, "%s is an HP49 ROM\n", name);
+      *size = 2 * st.st_size;
+    }
   else if (four[0])
     {
       printf("%d\n", st.st_size);
@@ -188,8 +193,17 @@ int *size;
           opt_gx = 1;
         }
       else
-      if (*size != ROM_SIZE_GX)
+      if (*size == 4 * ROM_SIZE_GX)
         {
+          fprintf(stderr, "%s seems to be HP49 ROM, but size is 0x%x\n",
+		  name, *size);
+          opt_gx = 2;
+        }
+      else
+      if (*size == 8 * ROM_SIZE_GX)
+        {
+          fprintf(stderr, "%s seems to be HP49 ROM, but size is 0x%x\n",
+		  name, *size);
           opt_gx = 2;
         }
       else

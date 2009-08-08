@@ -102,6 +102,7 @@ typedef struct hp_real {
 } hp_real;
 
 extern char *decode_rpl_obj	__ProtoType__((word_20 addr, char *buf));
+extern void decode_rpl_obj_2   __ProtoType__((word_20 addr, char *typ, char *dat));
 
 extern char *skip_ob		__ProtoType__((word_20 *addr, char *string));
 extern char *dec_rpl_obj	__ProtoType__((word_20 *addr, char *string));

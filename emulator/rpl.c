@@ -39,6 +39,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 #include "hp48.h"
 #include "hp48_emu.h"
@@ -49,7 +50,6 @@
 #define DEFINE_TRANS_TABLE 1
 #include "hp48char.h"
 #undef DEFINE_TRANS_TABLE
-#include <string.h>
 
 struct objfunc {
   char    *name;
@@ -1402,6 +1402,78 @@ char    *string;
   p = (*op->func)(addr, p);
 
   return p;
+}
+
+void
+#ifdef __FunctionProto__
+decode_rpl_obj_2(word_20 addr, char *typ, char *dat)
+#else
+decode_rpl_obj_2(addr, typ, dat)
+word_20  addr;
+char    *typ;
+char    *dat;
+#endif
+{
+  word_20	  prolog = 0;
+  int             len;
+  char		  tmp_str[80];
+  struct objfunc *op;
+
+  typ[0] = '\0';
+  dat[0] = '\0';
+
+  prolog = read_nibbles(addr, 5);
+
+  for (op = objects; op->prolog != 0; op++)
+    {
+      if (op->prolog == prolog)
+        break;
+    }
+
+  if (op->prolog == 0)
+    {
+      if (addr == SEMI)
+        {
+          append_str(typ, "Primitive Code");
+          append_str(dat, "SEMI");
+        }
+      else if (addr + 5 == prolog)
+        {
+          append_str(typ, "Primitive Code");
+          sprintf(dat, "at %.5lX", prolog);
+        }
+      else
+        {
+          append_str(typ, "PTR");
+          sprintf(dat, "%.5lX", prolog);
+        }
+      return;
+    }
+
+  if (op->prolog == DOCOL)
+    {
+      if (check_xlib(addr, tmp_str))
+        {
+          append_str(typ, "XLib Call");
+          append_str(dat, tmp_str);
+	  return;
+        }
+    }
+
+  if (op->length)
+    {
+      len = (read_nibbles(addr + 5, 5) - 5) / op->length;
+      sprintf(typ, "%s %d", op->name, len);
+    }
+  else
+    {
+  append_str(typ, op->name);
+    }
+
+  addr += 5;
+  (*op->func)(&addr, dat);
+
+  return;
 }
 
 char *

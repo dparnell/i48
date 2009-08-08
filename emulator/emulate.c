@@ -2434,8 +2434,8 @@ emulate()
   reset_timer(RUN_TIMER);
   reset_timer(IDLE_TIMER);
 
-  start_timer(T1_TIMER);
   set_accesstime();
+  start_timer(T1_TIMER);
 
   start_timer(RUN_TIMER);
 
@@ -2455,12 +2455,17 @@ emulate()
     while ((tv.tv_sec == tv2.tv_sec) && ((tv.tv_usec - tv2.tv_usec) < 2)) {
 	gettimeofday(&tv, &tz);
     }
+
     tv2.tv_usec = tv.tv_usec;
     tv2.tv_sec = tv.tv_sec;
 
-/* We need to trottle the speed here. */
+/* We need to throttle the speed here. */
 
-    if (schedule_event-- == 0)
+    if (schedule_event < 0) {
+//puts("bug");
+//	schedule_event = 0;
+    }
+    if (schedule_event-- <= 0)
       {
         schedule();
       }
