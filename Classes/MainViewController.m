@@ -136,10 +136,10 @@ static void lcd_display_nibbles(int id, int x, int y) {
 	unsigned char mask;
 	int i, limit;
 	
-	if(display_buffer && x<=128) {
-		unsigned int* p = (unsigned int*)(display_buffer + (y*DISP_COLS*4)+x*4);
+	if(display_buffer && x<=129) {
+		unsigned int* p = (unsigned int*)(display_buffer + (y*(DISP_COLS+2)*4)+x*4);
 		
-		if(x<127) {
+		if(x<128) {
 			limit = 4;
 		} else {
 			limit = 3;
@@ -164,8 +164,8 @@ draw_nibble(int c, int r, int val)
 {
 	int x, y;
 	
-	x = (c * 4);
-	y = r;
+	x = (c * 4)+1;
+	y = r+1;
 	val &= 0x0f;
 	lcd_display_nibbles(val, x, y);
 }
@@ -296,12 +296,17 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	instance = self;
 	memset(&saturn, 0, sizeof(saturn));
 		
-	_display_buffer = malloc(DISP_COLS*4*DISP_ROWS);
+	_display_buffer = malloc((DISP_COLS+2)*4*(DISP_ROWS+2));
+	
 	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
 
-	lcdContext = CGBitmapContextCreate(_display_buffer, DISP_COLS, DISP_ROWS, 8, DISP_COLS*4, colorspace, kCGImageAlphaNoneSkipLast);
+	lcdContext = CGBitmapContextCreate(_display_buffer, DISP_COLS+2, DISP_ROWS+2, 8, (DISP_COLS+2)*4, colorspace, kCGImageAlphaNoneSkipLast);
 	CGColorSpaceRelease(colorspace);
 	display_buffer = CGBitmapContextGetData(lcdContext);
+
+	for(int i=0; i<(DISP_ROWS+2)*(DISP_COLS+2); i++) {
+		((unsigned int*)display_buffer)[i] = BACKGROUND_PIXEL;
+	}
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
