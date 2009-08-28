@@ -20,6 +20,7 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		6546136810479CD000C5A377 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6546136710479CD000C5A377 /* Entitlements.plist */; };
 		655E47E30F94469C00F8AE5E /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BA0F94469C00F8AE5E /* device.c */; };
 		655E47E60F94469C00F8AE5E /* emulate.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BF0F94469C00F8AE5E /* emulate.c */; };
 		655E47E80F94469C00F8AE5E /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C80F94469C00F8AE5E /* init.c */; };
@@ -77,6 +78,7 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* i48_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48_Prefix.pch; sourceTree = "<group>"; };
+		6546136710479CD000C5A377 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		655E47B10F94469C00F8AE5E /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = emulator/actions.c; sourceTree = "<group>"; };
 		655E47B30F94469C00F8AE5E /* append.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = append.h; path = emulator/append.h; sourceTree = "<group>"; };
 		655E47B60F94469C00F8AE5E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = emulator/config.h; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6546136710479CD000C5A377 /* Entitlements.plist */,
 				65F810A0101F0E8D00B94E0F /* background.png */,
 				6570AA8B101C2B5C00275D68 /* icon.png */,
 				655E4AB00F97D4C300F8AE5E /* ann1.png */,
@@ -327,6 +330,7 @@
 				6570AA8C101C2B5C00275D68 /* icon.png in Resources */,
 				65F810A1101F0E8D00B94E0F /* background.png in Resources */,
 				65F810FF101F1EA700B94E0F /* about.html in Resources */,
+				6546136810479CD000C5A377 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +379,6 @@
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = i48;
-				PROVISIONING_PROFILE = "806757EB-6727-486B-88F5-E721D2B7D742";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806757EB-6727-486B-88F5-E721D2B7D742";
 			};
 			name = Debug;
 		};
@@ -391,10 +393,37 @@
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = i48;
-				PROVISIONING_PROFILE = "806757EB-6727-486B-88F5-E721D2B7D742";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806757EB-6727-486B-88F5-E721D2B7D742";
 			};
 			name = Release;
+		};
+		6549BA4F10479BBD003A1C2D /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Automagic Software Pty Ltd";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E003598-640B-430E-A743-CFCA9DEC1915";
+				SDKROOT = iphoneos2.2.1;
+			};
+			name = Distribution;
+		};
+		6549BA5010479BBD003A1C2D /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = i48_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = i48;
+			};
+			name = Distribution;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -431,6 +460,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				6549BA5010479BBD003A1C2D /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -440,6 +470,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				6549BA4F10479BBD003A1C2D /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
