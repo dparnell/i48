@@ -17,7 +17,13 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
+    [[NSUserDefaults standardUserDefaults] 
+		registerDefaults: [NSDictionary dictionaryWithObjectsAndKeys: 
+							[NSNumber numberWithBool: YES], @"limit_speed",
+							 nil
+						   ]
+	 ];
+	
     [window addSubview:[rootViewController view]];
     [window makeKeyAndVisible];
 }

@@ -2419,7 +2419,7 @@ schedule()
 
 int
 #ifdef __FunctionProto__
-emulate(void)
+emulate(int limit_speed)
 #else
 emulate()
 #endif
@@ -2447,18 +2447,20 @@ emulate()
   do {
     step_instruction();
 
+	if(limit_speed) {
 #ifdef SOLARIS
-    gettimeofday(&tv);
+		gettimeofday(&tv);
 #else
-    gettimeofday(&tv, &tz);
+		gettimeofday(&tv, &tz);
 #endif
-    while ((tv.tv_sec == tv2.tv_sec) && ((tv.tv_usec - tv2.tv_usec) < 2)) {
-	gettimeofday(&tv, &tz);
-    }
+		while ((tv.tv_sec == tv2.tv_sec) && ((tv.tv_usec - tv2.tv_usec) < 2)) {
+			gettimeofday(&tv, &tz);
+		}
 
-    tv2.tv_usec = tv.tv_usec;
-    tv2.tv_sec = tv.tv_sec;
-
+		tv2.tv_usec = tv.tv_usec;
+		tv2.tv_sec = tv.tv_sec;
+	}
+//	  usleep(2);
 /* We need to throttle the speed here. */
 
     if (schedule_event < 0) {

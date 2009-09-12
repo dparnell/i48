@@ -277,7 +277,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	fKeyInterrupt = NO;
 	
 //	NSLog(@"calling emulate");
-	emulate();
+	emulate([[NSUserDefaults standardUserDefaults] boolForKey: @"limit_speed"]);
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
