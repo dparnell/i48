@@ -49,7 +49,7 @@
 #include "romio.h"
 
 /* #define DEBUG_TIMER 1 */
-/* #define DEBUG_TIMER_ADJUST 1 */
+#define DEBUG_TIMER_ADJUST 1
 
 #ifdef SOLARIS
 extern int gettimeofday __ProtoType__((struct timeval *tp));
@@ -585,6 +585,7 @@ get_t1_t2()
   word_20	  accesstime_loc;
   int             i;
 
+	
 #ifdef SOLARIS
   gettimeofday(&tv);
 #else
@@ -697,7 +698,7 @@ get_t1_t2()
       fprintf(stderr, " TICKS\n");
 #endif
     }
-
+	
   if ((saturn.timer2 >= 0 && (access_time.lo & 0x80000000))
       || ((unsigned long)saturn.timer2 > access_time.lo))
     {

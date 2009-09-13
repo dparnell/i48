@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface MainView : UIView {
-
+	UIImage* _image;
 }
+
+@property(retain) UIImage* image;
 
 @end

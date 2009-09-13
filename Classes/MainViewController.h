@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainView.h"
 
 @interface MainViewController : UIViewController {
 	unsigned char* _display_buffer;
@@ -15,7 +16,7 @@
 
 	NSThread* emulatorThread;
 
-	UIImageView* _lcd;
+	MainView* _lcd;
 	
     UIImageView* _ann1;
     UIImageView* _ann2;
@@ -28,7 +29,7 @@
 - (IBAction) buttonPressed:(UIButton*)sender;
 - (IBAction) buttonReleased:(UIButton*)sender;
 
-@property(nonatomic,retain) IBOutlet UIImageView* lcd;
+@property(nonatomic,retain) IBOutlet MainView* lcd;
 
 @property(nonatomic,retain) IBOutlet UIImageView* ann1;
 @property(nonatomic,retain) IBOutlet UIImageView* ann2;

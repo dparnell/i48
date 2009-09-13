@@ -10,6 +10,8 @@
 
 @implementation MainView
 
+@synthesize image = _image;
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
     }
@@ -18,13 +20,28 @@
 
 
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
+	if(_image) {
+		[_image drawInRect: self.bounds];
+	} else {
+		[super drawRect: rect];
+	}
+	
 }
 
 
 - (void)dealloc {
+	[_image release];
+	
     [super dealloc];
 }
 
+- (void) setImage:(UIImage *)img {
+	[img retain];
+	[_image release];
+	
+	_image = img;
+	
+	[self setNeedsDisplay];
+}
 
 @end

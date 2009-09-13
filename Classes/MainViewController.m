@@ -272,12 +272,18 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 }
 
 - (void) emulatorThread:(id)dummy {		
+	BOOL limit_speed;
+	
+	NSAutoreleasePool* pool = [NSAutoreleasePool new];
 	NSLog(@"starting emulation thread");
 	fRunning = YES;
 	fKeyInterrupt = NO;
 	
+	limit_speed = [[NSUserDefaults standardUserDefaults] boolForKey: @"limit_speed"];
+	[pool release];
 //	NSLog(@"calling emulate");
-	emulate([[NSUserDefaults standardUserDefaults] boolForKey: @"limit_speed"]);
+	
+	emulate(limit_speed);
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -302,6 +308,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 
 	lcdContext = CGBitmapContextCreate(_display_buffer, DISP_COLS+2, DISP_ROWS+2, 8, (DISP_COLS+2)*4, colorspace, kCGImageAlphaNoneSkipLast);
 	CGColorSpaceRelease(colorspace);
+	CGContextSetShouldAntialias(lcdContext, NO);
 	display_buffer = CGBitmapContextGetData(lcdContext);
 
 	for(int i=0; i<(DISP_ROWS+2)*(DISP_COLS+2); i++) {
