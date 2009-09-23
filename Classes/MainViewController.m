@@ -333,6 +333,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 		if([v isKindOfClass: [UIButton class]]) {
 			UIButton* b = (UIButton*)v;
 			
+			b.showsTouchWhenHighlighted = YES;
 			[b addTarget: self action: @selector(buttonPressed:) forControlEvents: UIControlEventTouchDown];
 			[b addTarget: self action: @selector(buttonReleased:) forControlEvents: UIControlEventTouchUpInside];
 		}
@@ -377,14 +378,12 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 			saturn.keybuf.rows[i] |= 0x8000;
 		}
 		fKeyInterrupt = YES;
-//		do_kbd_int();
 	} else {
 		r = code >> 4;
 		c = 1 << (code & 0xf);
 		if ((saturn.keybuf.rows[r] & c) == 0) {
 			if (saturn.kbd_ien) {
 				fKeyInterrupt = YES;
-//				do_kbd_int();
 			}
 			if ((saturn.keybuf.rows[r] & c)) {
 				NSLog(@"bug");

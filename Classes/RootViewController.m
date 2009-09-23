@@ -19,7 +19,10 @@
 
 - (void)viewDidLoad {	
     [super viewDidLoad];
-    MainViewController *viewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
+	
+	NSString* skin = [[NSUserDefaults standardUserDefaults] objectForKey: @"skin"];
+	
+    MainViewController *viewController = [[MainViewController alloc] initWithNibName: skin bundle:nil];
     self.mainViewController = viewController;
     [viewController release];
     

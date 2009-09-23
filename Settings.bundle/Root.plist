@@ -8,6 +8,26 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Skin</string>
+			<key>Key</key>
+			<string>skin</string>
+			<key>DefaultValue</key>
+			<string>MainView</string>
+			<key>Titles</key>
+			<array>
+				<string>Real HP48</string>
+				<string>Power48 by Fabrice Roux</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>MainView</string>
+				<string>MainView_froux</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
 			<string>Limit Emulation Speed</string>
