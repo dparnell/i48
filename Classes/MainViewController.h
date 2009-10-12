@@ -23,7 +23,7 @@
     UIImageView* _ann3;
     UIImageView* _ann4;
     UIImageView* _ann5;
-    UIImageView* _ann6;
+    UIImageView* _ann6;	
 }
 
 - (IBAction) buttonPressed:(UIButton*)sender;

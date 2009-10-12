@@ -13,6 +13,8 @@
 #import "hp48_emu.h"
 #import "device.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+
 static MainViewController* instance = nil;
 
 @implementation MainViewController
@@ -41,6 +43,7 @@ static BOOL fKeyInterrupt;
 static BOOL dirty = NO;
 BOOL fRunning = NO;
 
+//#define EMULATE_SOUND
 
 static unsigned char * display_buffer = nil;
 
@@ -293,7 +296,53 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
     return self;
 }
 
+#ifdef EMULATE_SOUND
+#define BUFFER_SIZE 64
+#define BUFFER_COUNT 2
 
+static char sound_buf[0x4000];
+static int in_pos = 0;
+static int out_pos = 0;
+
+- (void) soundThread:(id)dummy {
+
+	while (fRunning) {
+		if(saturn.OUT[2] & 0x8) {
+			sound_buf[in_pos++] = 1;
+		} else {
+			sound_buf[in_pos++] = 0;
+		}
+		
+		in_pos = in_pos & 0x3fff;
+		
+		[NSThread sleepForTimeInterval: 1.0f/8000.0f];
+	}
+}
+
+static AudioQueueRef audioQueue;
+
+void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
+                        AudioQueueBufferRef inBuffer) {
+    short* pBuffer = inBuffer->mAudioData;
+    UInt32 bytes = inBuffer->mAudioDataBytesCapacity;
+/*
+	short x;
+	if (saturn.OUT[2] & 0x8) {
+		x = 32768;
+	} else {
+		x = 0;
+	}
+*/
+	
+	for(int i=0; i<bytes>>1; i++) {
+		pBuffer[i] = sound_buf[out_pos++] ? 32767 : 0;
+		out_pos = out_pos & 0x3fff;
+	}
+	
+    inBuffer->mAudioDataByteSize = bytes;
+    AudioQueueEnqueueBuffer(audioQueue, inBuffer, 0, NULL);
+}
+#endif
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -323,6 +372,44 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	init_emulator();
 	
 	init_active_stuff();
+
+#ifdef EMULATE_SOUND	
+	// start up the sound support
+    OSStatus err = noErr;
+    // Setup the audio device.
+    AudioStreamBasicDescription deviceFormat;
+    deviceFormat.mSampleRate = 8000;
+    deviceFormat.mFormatID = kAudioFormatLinearPCM;
+    deviceFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger;
+    deviceFormat.mBytesPerPacket = 2;
+    deviceFormat.mFramesPerPacket = 1;
+    deviceFormat.mBytesPerFrame = 2;
+    deviceFormat.mChannelsPerFrame = 1;
+    deviceFormat.mBitsPerChannel = 16;
+    deviceFormat.mReserved = 0;
+    // Create a new output AudioQueue for the device.
+    err = AudioQueueNewOutput(&deviceFormat, AudioQueueCallback, NULL,
+                              CFRunLoopGetCurrent(), kCFRunLoopCommonModes,
+                              0, &audioQueue);
+	NSLog(@"err = %p", err);
+    // Allocate buffers for the AudioQueue, and pre-fill them.
+    for (int i = 0; i < BUFFER_COUNT; ++i) {
+        AudioQueueBufferRef mBuffer;
+        err = AudioQueueAllocateBuffer(audioQueue, BUFFER_SIZE, &mBuffer);
+		NSLog(@"alloc buffer %d = %p", i, err);
+        if (err != noErr) break;
+        AudioQueueCallback(NULL, audioQueue, mBuffer);
+    }	
+	
+	err = AudioQueueStart(audioQueue, nil);
+	NSLog(@"start = %p", err);
+	
+	fRunning = YES;
+	NSThread* soundThread = [[[NSThread alloc] initWithTarget: self selector: @selector(soundThread:) object: nil] retain];
+	[soundThread setName: @"Sound Thread"];
+	[soundThread start];
+	
+#endif
 	
 	emulatorThread = [[[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil] retain];
 	[emulatorThread setName: @"Emulator Thread"];

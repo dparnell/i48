@@ -43,6 +43,7 @@
 		6570AA8C101C2B5C00275D68 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6570AA8B101C2B5C00275D68 /* icon.png */; };
 		657ADE74106A2908005EC323 /* MainView_froux.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657ADE73106A2908005EC323 /* MainView_froux.xib */; };
 		657ADE77106A2919005EC323 /* HP48_froux.png in Resources */ = {isa = PBXBuildFile; fileRef = 657ADE76106A2919005EC323 /* HP48_froux.png */; };
+		657ADEB9106A3BB6005EC323 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657ADEB8106A3BB6005EC323 /* AudioToolbox.framework */; };
 		65F810A1101F0E8D00B94E0F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F810A0101F0E8D00B94E0F /* background.png */; };
 		65F810FF101F1EA700B94E0F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 65F810FE101F1EA700B94E0F /* about.html */; };
 		65FB18220F9B492500811E20 /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
@@ -121,6 +122,7 @@
 		6570AA8B101C2B5C00275D68 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		657ADE73106A2908005EC323 /* MainView_froux.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView_froux.xib; sourceTree = "<group>"; };
 		657ADE76106A2919005EC323 /* HP48_froux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP48_froux.png; sourceTree = "<group>"; };
+		657ADEB8106A3BB6005EC323 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		65F810A0101F0E8D00B94E0F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		65F810FE101F1EA700B94E0F /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
+				657ADEB9106A3BB6005EC323 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +240,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
+				657ADEB8106A3BB6005EC323 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -427,13 +431,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = i48;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Distribution;
 		};
