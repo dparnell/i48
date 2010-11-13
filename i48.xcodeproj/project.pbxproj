@@ -20,6 +20,7 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		653A91AA11C0BF6200A5CAB4 /* iPadMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */; };
 		6546136810479CD000C5A377 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6546136710479CD000C5A377 /* Entitlements.plist */; };
 		655E47E30F94469C00F8AE5E /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BA0F94469C00F8AE5E /* device.c */; };
 		655E47E60F94469C00F8AE5E /* emulate.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BF0F94469C00F8AE5E /* emulate.c */; };
@@ -44,6 +45,9 @@
 		657ADE74106A2908005EC323 /* MainView_froux.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657ADE73106A2908005EC323 /* MainView_froux.xib */; };
 		657ADE77106A2919005EC323 /* HP48_froux.png in Resources */ = {isa = PBXBuildFile; fileRef = 657ADE76106A2919005EC323 /* HP48_froux.png */; };
 		657ADEB9106A3BB6005EC323 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657ADEB8106A3BB6005EC323 /* AudioToolbox.framework */; };
+		65AD5AB4128E42C400C767E5 /* MainView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65AD5AB3128E42C400C767E5 /* MainView_iPad.xib */; };
+		65AD5B21128E502900C767E5 /* FlipsideView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65AD5B20128E502900C767E5 /* FlipsideView_iPad.xib */; };
+		65AD5B2D128E506600C767E5 /* MainView_froux_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65AD5B2C128E506600C767E5 /* MainView_froux_iPad.xib */; };
 		65F810A1101F0E8D00B94E0F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F810A0101F0E8D00B94E0F /* background.png */; };
 		65F810FF101F1EA700B94E0F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 65F810FE101F1EA700B94E0F /* about.html */; };
 		65FB18220F9B492500811E20 /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
@@ -82,6 +86,7 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* i48_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48_Prefix.pch; sourceTree = "<group>"; };
+		653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iPadMainMenu.xib; sourceTree = "<group>"; };
 		6546136710479CD000C5A377 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		655E47B10F94469C00F8AE5E /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = emulator/actions.c; sourceTree = "<group>"; };
 		655E47B30F94469C00F8AE5E /* append.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = append.h; path = emulator/append.h; sourceTree = "<group>"; };
@@ -123,6 +128,9 @@
 		657ADE73106A2908005EC323 /* MainView_froux.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView_froux.xib; sourceTree = "<group>"; };
 		657ADE76106A2919005EC323 /* HP48_froux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP48_froux.png; sourceTree = "<group>"; };
 		657ADEB8106A3BB6005EC323 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		65AD5AB3128E42C400C767E5 /* MainView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView_iPad.xib; sourceTree = "<group>"; };
+		65AD5B20128E502900C767E5 /* FlipsideView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView_iPad.xib; sourceTree = "<group>"; };
+		65AD5B2C128E506600C767E5 /* MainView_froux_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView_froux_iPad.xib; sourceTree = "<group>"; };
 		65F810A0101F0E8D00B94E0F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		65F810FE101F1EA700B94E0F /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -213,23 +221,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				657ADE76106A2919005EC323 /* HP48_froux.png */,
-				6546136710479CD000C5A377 /* Entitlements.plist */,
-				65F810A0101F0E8D00B94E0F /* background.png */,
-				6570AA8B101C2B5C00275D68 /* icon.png */,
-				655E4AB00F97D4C300F8AE5E /* ann1.png */,
-				655E4AB10F97D4C300F8AE5E /* ann2.png */,
-				655E4AB20F97D4C300F8AE5E /* ann3.png */,
-				655E4AB30F97D4C300F8AE5E /* ann4.png */,
-				655E4AB40F97D4C300F8AE5E /* ann5.png */,
-				655E4AB50F97D4C300F8AE5E /* ann6.png */,
-				655E4A150F94B29E00F8AE5E /* hp48.rom */,
-				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
-				280E754B0DD40C5E005A515E /* MainView.xib */,
-				280E754C0DD40C5E005A515E /* MainWindow.xib */,
-				657ADE73106A2908005EC323 /* MainView_froux.xib */,
-				8D1107310486CEB800E47090 /* Info.plist */,
-				65F810FE101F1EA700B94E0F /* about.html */,
+				65AD5ABC128E431A00C767E5 /* Common */,
+				65AD5ABB128E431400C767E5 /* iPhone */,
+				65AD5ABA128E430D00C767E5 /* iPad */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -280,6 +274,48 @@
 			name = Emulator;
 			sourceTree = "<group>";
 		};
+		65AD5ABA128E430D00C767E5 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */,
+				65AD5AB3128E42C400C767E5 /* MainView_iPad.xib */,
+				65AD5B20128E502900C767E5 /* FlipsideView_iPad.xib */,
+				65AD5B2C128E506600C767E5 /* MainView_froux_iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		65AD5ABB128E431400C767E5 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
+				280E754B0DD40C5E005A515E /* MainView.xib */,
+				280E754C0DD40C5E005A515E /* MainWindow.xib */,
+				657ADE73106A2908005EC323 /* MainView_froux.xib */,
+				657ADE76106A2919005EC323 /* HP48_froux.png */,
+				65F810A0101F0E8D00B94E0F /* background.png */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		65AD5ABC128E431A00C767E5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107310486CEB800E47090 /* Info.plist */,
+				65F810FE101F1EA700B94E0F /* about.html */,
+				655E4A150F94B29E00F8AE5E /* hp48.rom */,
+				655E4AB00F97D4C300F8AE5E /* ann1.png */,
+				655E4AB10F97D4C300F8AE5E /* ann2.png */,
+				655E4AB20F97D4C300F8AE5E /* ann3.png */,
+				655E4AB30F97D4C300F8AE5E /* ann4.png */,
+				655E4AB40F97D4C300F8AE5E /* ann5.png */,
+				655E4AB50F97D4C300F8AE5E /* ann6.png */,
+				6570AA8B101C2B5C00275D68 /* icon.png */,
+				6546136710479CD000C5A377 /* Entitlements.plist */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -308,6 +344,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "i48" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -347,6 +384,10 @@
 				65602C56105B9F910049FD60 /* Settings.bundle in Resources */,
 				657ADE74106A2908005EC323 /* MainView_froux.xib in Resources */,
 				657ADE77106A2919005EC323 /* HP48_froux.png in Resources */,
+				653A91AA11C0BF6200A5CAB4 /* iPadMainMenu.xib in Resources */,
+				65AD5AB4128E42C400C767E5 /* MainView_iPad.xib in Resources */,
+				65AD5B21128E502900C767E5 /* FlipsideView_iPad.xib in Resources */,
+				65AD5B2D128E506600C767E5 /* MainView_froux_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +464,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E003598-640B-430E-A743-CFCA9DEC1915";
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
 		};
@@ -454,7 +496,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -467,7 +510,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

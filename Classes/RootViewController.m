@@ -22,22 +22,35 @@
 	
 	NSString* skin = [[NSUserDefaults standardUserDefaults] objectForKey: @"skin"];
 	
+	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		skin = [skin stringByAppendingString: @"_iPad"];
+	}
+	
     MainViewController *viewController = [[MainViewController alloc] initWithNibName: skin bundle:nil];
-    self.mainViewController = viewController;
-    [viewController release];
-    
-    [self.view insertSubview:mainViewController.view belowSubview:infoButton];
+	if (viewController && viewController.view) {
+		self.mainViewController = viewController;
+		[self.view insertSubview:mainViewController.view belowSubview:infoButton];
+	}    
+	[viewController release];
 }
 
 
-- (void)loadFlipsideViewController {
-    
-    FlipsideViewController *viewController = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+- (void)loadFlipsideViewController {    
+    FlipsideViewController *viewController;
+	
+	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		viewController = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView_iPad" bundle:nil];
+	} else {
+		viewController = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+	}
+	
+	
     self.flipsideViewController = viewController;
     [viewController release];
-    
+
+	CGRect r = viewController.view.frame;
     // Set up the navigation bar
-    UINavigationBar *aNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
+    UINavigationBar *aNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0, 0.0, r.size.width, 44.0)];
     aNavigationBar.barStyle = UIBarStyleBlackOpaque;
     self.flipsideNavigationBar = aNavigationBar;
     [aNavigationBar release];

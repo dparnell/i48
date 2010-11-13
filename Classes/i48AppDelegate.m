@@ -25,6 +25,10 @@
 						   ]
 	 ];
 	
+	
+	CGRect  rect = [[UIScreen mainScreen] bounds];
+    [window setFrame:rect];
+	
     [window addSubview:[rootViewController view]];
     [window makeKeyAndVisible];
 }
