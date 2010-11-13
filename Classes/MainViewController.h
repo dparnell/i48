@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MainView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface MainViewController : UIViewController {
 	unsigned char* _display_buffer;
-	
+
+	SystemSoundID soundID;
 	CGContextRef lcdContext;
 
 	NSThread* emulatorThread;

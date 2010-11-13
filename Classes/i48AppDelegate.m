@@ -20,6 +20,7 @@
     [[NSUserDefaults standardUserDefaults] 
 		registerDefaults: [NSDictionary dictionaryWithObjectsAndKeys: 
 							[NSNumber numberWithBool: YES], @"limit_speed",
+							[NSNumber numberWithBool: NO], @"key_click",
 							@"MainView", @"skin",
 							 nil
 						   ]

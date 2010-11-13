@@ -348,6 +348,9 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	NSString *path = [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] pathForResource:@"Tock" ofType:@"aiff"];
+	AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &soundID);
+	
 	instance = self;
 	memset(&saturn, 0, sizeof(saturn));
 		
@@ -450,6 +453,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 
 - (void)dealloc {
 	instance = nil;
+	AudioServicesDisposeSystemSoundID(soundID);
 	
     [super dealloc];
 }
@@ -459,6 +463,12 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 //	NSLog(@"button %@ - %d pressed", [sender titleForState: UIControlStateNormal], code);
 	
 	int i, r, c;
+	
+	NSNumber* play_click = [[NSUserDefaults standardUserDefaults] objectForKey: @"key_click"];
+
+	if([play_click boolValue]) {
+		AudioServicesPlaySystemSound(soundID);
+	}
 	
 	if (code == 0x8000) {
 		for (i = 0; i < 9; i++) {
