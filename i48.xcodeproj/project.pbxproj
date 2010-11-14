@@ -48,6 +48,7 @@
 		65AD5AB4128E42C400C767E5 /* MainView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65AD5AB3128E42C400C767E5 /* MainView_iPad.xib */; };
 		65AD5B21128E502900C767E5 /* FlipsideView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65AD5B20128E502900C767E5 /* FlipsideView_iPad.xib */; };
 		65AD5B2D128E506600C767E5 /* MainView_froux_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65AD5B2C128E506600C767E5 /* MainView_froux_iPad.xib */; };
+		65AD5BD3128EA4A800C767E5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD5BD2128EA4A800C767E5 /* CoreAudio.framework */; };
 		65F810A1101F0E8D00B94E0F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F810A0101F0E8D00B94E0F /* background.png */; };
 		65F810FF101F1EA700B94E0F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 65F810FE101F1EA700B94E0F /* about.html */; };
 		65FB18220F9B492500811E20 /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
@@ -131,6 +132,7 @@
 		65AD5AB3128E42C400C767E5 /* MainView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView_iPad.xib; sourceTree = "<group>"; };
 		65AD5B20128E502900C767E5 /* FlipsideView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView_iPad.xib; sourceTree = "<group>"; };
 		65AD5B2C128E506600C767E5 /* MainView_froux_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView_froux_iPad.xib; sourceTree = "<group>"; };
+		65AD5BD2128EA4A800C767E5 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		65F810A0101F0E8D00B94E0F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		65F810FE101F1EA700B94E0F /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				657ADEB9106A3BB6005EC323 /* AudioToolbox.framework in Frameworks */,
+				65AD5BD3128EA4A800C767E5 /* CoreAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +238,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 				657ADEB8106A3BB6005EC323 /* AudioToolbox.framework */,
+				65AD5BD2128EA4A800C767E5 /* CoreAudio.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

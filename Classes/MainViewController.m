@@ -13,7 +13,7 @@
 #import "hp48_emu.h"
 #import "device.h"
 
-#import <AudioToolbox/AudioToolbox.h>
+//#define EMULATE_SOUND
 
 static MainViewController* instance = nil;
 
@@ -42,8 +42,6 @@ char   *homeDirectory = nil;
 static BOOL fKeyInterrupt;
 static BOOL dirty = NO;
 BOOL fRunning = NO;
-
-//#define EMULATE_SOUND
 
 static unsigned char * display_buffer = nil;
 
@@ -297,50 +295,50 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 }
 
 #ifdef EMULATE_SOUND
-#define BUFFER_SIZE 64
+#define BUFFER_SIZE 1000
 #define BUFFER_COUNT 2
-
-static char sound_buf[0x4000];
-static int in_pos = 0;
-static int out_pos = 0;
-
-- (void) soundThread:(id)dummy {
-
-	while (fRunning) {
-		if(saturn.OUT[2] & 0x8) {
-			sound_buf[in_pos++] = 1;
-		} else {
-			sound_buf[in_pos++] = 0;
-		}
-		
-		in_pos = in_pos & 0x3fff;
-		
-		[NSThread sleepForTimeInterval: 1.0f/8000.0f];
-	}
-}
+#define SAMPLE_RATE 44100
 
 static AudioQueueRef audioQueue;
+static int freq_counter = 0;
+static char speaker_state = 0;
+static CFTimeInterval last_time = 0;
 
 void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
                         AudioQueueBufferRef inBuffer) {
     short* pBuffer = inBuffer->mAudioData;
     UInt32 bytes = inBuffer->mAudioDataBytesCapacity;
-/*
-	short x;
-	if (saturn.OUT[2] & 0x8) {
-		x = 32768;
+	
+	CFTimeInterval now = CFAbsoluteTimeGetCurrent();
+	int count = device.speaker_counter;
+	if(last_time && count) {
+		CFTimeInterval deltaT = now-last_time;
+		float freq = count/deltaT;
+//		freq = 1000;
+		int delta = SAMPLE_RATE / freq;
+//		NSLog(@"count = %d, deltaT = %f, freq = %f, delta = %d", count, deltaT, freq, delta);
+//		delta = 44;
+		device.speaker_counter = 0;
+		for(int i=0; i<bytes>>1; i++) {
+			freq_counter--;
+			if (freq_counter<0) {
+				freq_counter = delta;
+				speaker_state = !speaker_state;
+			}
+			pBuffer[i] = speaker_state ? 32767 : 0;
+		}
 	} else {
-		x = 0;
+		for(int i=0; i<bytes>>1; i++) {
+			pBuffer[i] = 0;
+		}
 	}
-*/
-	
-	for(int i=0; i<bytes>>1; i++) {
-		pBuffer[i] = sound_buf[out_pos++] ? 32767 : 0;
-		out_pos = out_pos & 0x3fff;
-	}
-	
-    inBuffer->mAudioDataByteSize = bytes;
-    AudioQueueEnqueueBuffer(audioQueue, inBuffer, 0, NULL);
+
+	last_time = now;
+	inBuffer->mAudioDataByteSize = bytes;
+	OSStatus err = AudioQueueEnqueueBuffer(audioQueue, inBuffer, 0, NULL);
+	if(err) {
+		NSLog(@"AudioQueueEnqueueBuffer failed - %d", err);
+	}	
 }
 #endif
 
@@ -381,7 +379,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
     OSStatus err = noErr;
     // Setup the audio device.
     AudioStreamBasicDescription deviceFormat;
-    deviceFormat.mSampleRate = 8000;
+    deviceFormat.mSampleRate = SAMPLE_RATE;
     deviceFormat.mFormatID = kAudioFormatLinearPCM;
     deviceFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger;
     deviceFormat.mBytesPerPacket = 2;
@@ -408,10 +406,6 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 	NSLog(@"start = %p", err);
 	
 	fRunning = YES;
-	NSThread* soundThread = [[[NSThread alloc] initWithTarget: self selector: @selector(soundThread:) object: nil] retain];
-	[soundThread setName: @"Sound Thread"];
-	[soundThread start];
-	
 #endif
 	
 	emulatorThread = [[[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil] retain];

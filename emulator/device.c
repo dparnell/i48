@@ -178,12 +178,7 @@ check_devices()
 #endif
 }
 
-#if 0
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
+static char last_state = 0;
 
 void
 #ifdef __FunctionProto__
@@ -192,17 +187,9 @@ check_out_register(void)
 check_out_register()
 #endif
 {
-  static int au = -2;
-  unsigned char c[] = { 0xff, 0x00 };
-
-  if (au == -2)
-    if ((au = open("/dev/audio", O_WRONLY)) < 0)
-  if (au < 0)
-    return;
-  if (saturn.OUT[2] & 0x8)
-    write(au, c, 1);
-  else
-    write(au, &c[1], 1);
+	char state = (saturn.OUT[2] & 0x8) == 0x8;
+	if (state != last_state) {
+		device.speaker_counter++;
+		last_state = state;
+	}
 }
-
-#endif
