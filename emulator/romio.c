@@ -46,13 +46,13 @@ unsigned char **mem;
 int *size;
 #endif
 {
-  struct stat st;
   FILE *fp;
   unsigned char *tmp_mem;
   unsigned char byte;
   unsigned char four[4];
   int i, j;
-
+  long file_size;
+	
   *mem = NULL;
   *size = 0;
   if (NULL == (fp = fopen(name, "r")))
@@ -61,13 +61,10 @@ int *size;
       return 0;
     }
 
-  if (stat(name, &st) < 0)
-    {
-      fprintf(stderr, "can\'t stat %s\n", name);
-      fclose(fp);
-      return 0;
-    }
-
+  fseek(fp, 0, SEEK_END);
+  file_size = ftell(fp);
+  fseek(fp, 0, SEEK_SET);
+	
   if (fread(four, 1, 4, fp) != 4)
     {
       fprintf(stderr, "can\'t read first 4 bytes of %s\n", name);
@@ -78,22 +75,22 @@ int *size;
   if (four[0] == 0x02 && four[1] == 0x03 &&
       four[2] == 0x06 && four[3] == 0x09)
     {
-      *size = st.st_size;
+      *size = file_size;
     }
   else if (four[0] == 0x32 && four[1] == 0x96 &&
       four[2] == 0x1b && four[3] == 0x80)
     {
-      *size = 2 * st.st_size;
+      *size = 2 * file_size;
     }
   else if (four[1] = 0x49)
     {
       fprintf(stderr, "%s is an HP49 ROM\n", name);
-      *size = 2 * st.st_size;
+      *size = 2 * file_size;
     }
   else if (four[0])
     {
-      printf("%d\n", st.st_size);
-      *size = st.st_size;
+      printf("%d\n", (int)file_size);
+      *size = file_size;
     }
   else
     {
@@ -112,7 +109,7 @@ int *size;
 
   *mem = (unsigned char *)malloc(*size);
 
-  if (st.st_size == *size)
+  if (file_size == *size)
     {
       /*
        * size is same as memory size, old version file
@@ -133,10 +130,10 @@ int *size;
        * size is different, check size and decompress memory
        */
 
-      if (st.st_size != *size / 2)
+      if (file_size != *size / 2)
         {
           fprintf(stderr, "strange size %s, expected %d, found %ld\n",
-                  name, *size / 2, st.st_size);
+                  name, *size / 2, (long int)file_size);
           free(*mem);
           *mem = NULL;
           *size = 0;
@@ -144,7 +141,7 @@ int *size;
           return 0;
         }
 
-      if (NULL == (tmp_mem = (unsigned char *)malloc((size_t)st.st_size)))
+      if (NULL == (tmp_mem = (unsigned char *)malloc((size_t)file_size)))
         {
           for (i = 0, j = 0; i < *size / 2; i++)
             {

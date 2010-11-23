@@ -1004,7 +1004,7 @@ int size;
         {
           if (!quiet)
             fprintf(stderr, "%s: strange size %s, expected %d, found %ld\n",
-                    progname, name, size / 2, st.st_size);
+                    progname, name, size / 2, (long int)st.st_size);
           fclose(fp);
           return 0;
         }
