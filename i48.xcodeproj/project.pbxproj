@@ -21,7 +21,6 @@
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		653A91AA11C0BF6200A5CAB4 /* iPadMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */; };
-		6546136810479CD000C5A377 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6546136710479CD000C5A377 /* Entitlements.plist */; };
 		655E47E30F94469C00F8AE5E /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BA0F94469C00F8AE5E /* device.c */; };
 		655E47E60F94469C00F8AE5E /* emulate.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BF0F94469C00F8AE5E /* emulate.c */; };
 		655E47E80F94469C00F8AE5E /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C80F94469C00F8AE5E /* init.c */; };
@@ -89,7 +88,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* i48_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48_Prefix.pch; sourceTree = "<group>"; };
 		653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iPadMainMenu.xib; sourceTree = "<group>"; };
-		6546136710479CD000C5A377 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		655E47B10F94469C00F8AE5E /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = emulator/actions.c; sourceTree = "<group>"; };
 		655E47B30F94469C00F8AE5E /* append.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = append.h; path = emulator/append.h; sourceTree = "<group>"; };
 		655E47B60F94469C00F8AE5E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = emulator/config.h; sourceTree = "<group>"; };
@@ -135,6 +133,7 @@
 		65AD5B20128E502900C767E5 /* FlipsideView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView_iPad.xib; sourceTree = "<group>"; };
 		65AD5B2C128E506600C767E5 /* MainView_froux_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView_froux_iPad.xib; sourceTree = "<group>"; };
 		65AD5BD2128EA4A800C767E5 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		65AED677129B24B200DA2205 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		65F810A0101F0E8D00B94E0F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		65F810FE101F1EA700B94E0F /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -318,7 +317,7 @@
 				655E4AB30F97D4C300F8AE5E /* ann4.png */,
 				655E4AB40F97D4C300F8AE5E /* ann5.png */,
 				655E4AB50F97D4C300F8AE5E /* ann6.png */,
-				6546136710479CD000C5A377 /* Entitlements.plist */,
+				65AED677129B24B200DA2205 /* Entitlements.plist */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -387,7 +386,6 @@
 				6570AA8C101C2B5C00275D68 /* icon_iPad.png in Resources */,
 				65F810A1101F0E8D00B94E0F /* background.png in Resources */,
 				65F810FF101F1EA700B94E0F /* about.html in Resources */,
-				6546136810479CD000C5A377 /* Entitlements.plist in Resources */,
 				65602C56105B9F910049FD60 /* Settings.bundle in Resources */,
 				657ADE74106A2908005EC323 /* MainView_froux.xib in Resources */,
 				657ADE77106A2919005EC323 /* HP48_froux.png in Resources */,
@@ -435,7 +433,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv6;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = "~/Development/iPhone/i48/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
 				COPY_PHASE_STRIP = NO;
@@ -452,7 +451,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv6;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = "~/Development/iPhone/i48/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
 				COPY_PHASE_STRIP = YES;
@@ -483,7 +483,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv6;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = "~/Development/iPhone/i48/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
