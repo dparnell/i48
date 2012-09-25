@@ -10,8 +10,6 @@
 
 @implementation MainView
 
-@synthesize image = _image;
-
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
     }
@@ -33,6 +31,10 @@
 	[_image release];
 	
     [super dealloc];
+}
+
+- (UIImage*) image {
+    return _image;
 }
 
 - (void) setImage:(UIImage *)img {

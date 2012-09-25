@@ -82,7 +82,7 @@ int *size;
     {
       *size = 2 * file_size;
     }
-  else if (four[1] = 0x49)
+  else if ((four[1] = 0x49))
     {
       fprintf(stderr, "%s is an HP49 ROM\n", name);
       *size = 2 * file_size;
