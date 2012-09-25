@@ -22,6 +22,10 @@
 	
 	NSString* skin = [[NSUserDefaults standardUserDefaults] objectForKey: @"skin"];
 	
+    if(skin == nil) {
+        skin = @"MainView";
+    }
+    
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		skin = [skin stringByAppendingString: @"_iPad"];
 	}
