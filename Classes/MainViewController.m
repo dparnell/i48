@@ -42,13 +42,17 @@ char   *homeDirectory = nil;
 static BOOL fKeyInterrupt;
 static BOOL dirty = NO;
 BOOL fRunning = NO;
+NSThread* emulatorThread = nil;
 
 static unsigned char * display_buffer = nil;
 
 int GetEvent() {
 	if(!fRunning) {
+        NSLog(@"Stopping emulation");
+        
 		exit_emulator();
-		[NSThread exit]; 
+        emulatorThread = nil;
+		[NSThread exit];
 	}
 	
 	if(fKeyInterrupt) {
@@ -342,6 +346,14 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 }
 #endif
 
+- (void) startEmulation:(id)dummy {
+    if(emulatorThread == nil) {
+        emulatorThread = [[[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil] retain];
+        [emulatorThread setName: @"Emulator Thread"];
+        [emulatorThread start];
+    }
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -407,11 +419,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 	
 	fRunning = YES;
 #endif
-	
-	emulatorThread = [[[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil] retain];
-	[emulatorThread setName: @"Emulator Thread"];
-	[emulatorThread start];
-	
+		
 	// connect up the event handlers
 	for(UIView* v in [self.view subviews]) {
 		if([v isKindOfClass: [UIButton class]]) {
@@ -423,13 +431,16 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 		}
 	}
 
+    [self startEmulation: nil];
+    
 	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(timeToDie:) name: UIApplicationWillTerminateNotification object: nil];
-//	[self performSelectorInBackground: @selector(emulatorThread:) withObject: nil];	
+	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(timeToDie:) name: UIApplicationWillResignActiveNotification object: nil];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(startEmulation:) name: UIApplicationDidBecomeActiveNotification object: nil];
 }
 
 - (void)timeToDie:(id)dummy {
 	fRunning = NO;
-	while(![emulatorThread isFinished]) {
+	while(emulatorThread && ![emulatorThread isFinished]) {
 		[NSThread sleepForTimeInterval: 0.1];
 	}
 }

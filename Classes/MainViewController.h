@@ -16,8 +16,6 @@
 	SystemSoundID soundID;
 	CGContextRef lcdContext;
 
-	NSThread* emulatorThread;
-
 	MainView* _lcd;
 	
     UIImageView* _ann1;
