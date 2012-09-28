@@ -202,7 +202,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				6586E04E16142EB3005DC100 /* Default-568h@2x.png */,
 				655E47B00F94468A00F8AE5E /* Emulator */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
@@ -311,6 +310,7 @@
 		65AD5ABC128E431A00C767E5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				6586E04E16142EB3005DC100 /* Default-568h@2x.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				65F810FE101F1EA700B94E0F /* about.html */,
 				655E4A150F94B29E00F8AE5E /* hp48.rom */,
@@ -438,7 +438,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = "~/Development/iPhone/i48/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
 				COPY_PHASE_STRIP = NO;
@@ -457,7 +457,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = "~/Development/iPhone/i48/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
 				COPY_PHASE_STRIP = YES;
@@ -491,7 +491,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = "~/Development/iPhone/i48/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
