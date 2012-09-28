@@ -348,6 +348,14 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 
 - (void) startEmulation:(id)dummy {
     if(emulatorThread == nil) {
+        if([[[NSUserDefaults standardUserDefaults] objectForKey: @"reset"] boolValue]) {
+            [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithBool: NO] forKey: @"reset"];
+            resetOnStartup = 1;
+            saturn.PC = 0;
+            do_reset();
+        } else {
+            resetOnStartup = 0;
+        }
         emulatorThread = [[[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil] retain];
         [emulatorThread setName: @"Emulator Thread"];
         [emulatorThread start];
@@ -440,6 +448,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 
 - (void)timeToDie:(id)dummy {
 	fRunning = NO;
+    got_alarm = 1;
 	while(emulatorThread && ![emulatorThread isFinished]) {
 		[NSThread sleepForTimeInterval: 0.1];
 	}
