@@ -33,6 +33,7 @@
     MainViewController *viewController = [[MainViewController alloc] initWithNibName: skin bundle:nil];
 	if (viewController && viewController.view) {
 		self.mainViewController = viewController;
+        self.view.backgroundColor = mainViewController.view.backgroundColor;
 		[self.view insertSubview:mainViewController.view belowSubview:infoButton];
 	}    
 	[viewController release];
