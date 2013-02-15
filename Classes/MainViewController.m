@@ -348,8 +348,12 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 
 - (void) startEmulation:(id)dummy {
     if(emulatorThread == nil) {
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         if([[[NSUserDefaults standardUserDefaults] objectForKey: @"reset"] boolValue]) {
             [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithBool: NO] forKey: @"reset"];
+            NSLog(@"Removing HP48 processor state file");
+            [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat: @"%s/hp48", homeDirectory] error: nil];
             resetOnStartup = 1;
             saturn.PC = 0;
             do_reset();
@@ -365,8 +369,8 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	NSString *path = [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] pathForResource:@"Tock" ofType:@"aiff"];
+    
+    NSString *path = [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] pathForResource:@"Tock" ofType:@"aiff"];
 	AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &soundID);
 	
 	instance = self;
@@ -452,6 +456,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 	while(emulatorThread && ![emulatorThread isFinished]) {
 		[NSThread sleepForTimeInterval: 0.1];
 	}
+    emulatorThread = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -504,6 +509,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 		}
 	}
 	
+    got_alarm = 1;
 }
 
 - (IBAction) buttonReleased:(UIButton*)sender {
