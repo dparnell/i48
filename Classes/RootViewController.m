@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "MainViewController.h"
 #import "FlipsideViewController.h"
+#import "UIDevice+Resolutions.h"
 
 @implementation RootViewController
 
@@ -17,8 +18,11 @@
 @synthesize mainViewController;
 @synthesize flipsideViewController;
 
+
 - (void)viewDidLoad {	
     [super viewDidLoad];
+
+    UIDeviceResolution resolution = [[UIDevice currentDevice] resolution];
 	
 	NSString* skin = [[NSUserDefaults standardUserDefaults] objectForKey: @"skin"];
 	
@@ -28,7 +32,11 @@
     
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		skin = [skin stringByAppendingString: @"_iPad"];
-	}
+	} else {
+        if(resolution == UIDeviceResolution_iPhoneRetina5) {
+            skin = [skin stringByAppendingString: @"_retina4"];
+        }
+    }
 	
     MainViewController *viewController = [[MainViewController alloc] initWithNibName: skin bundle:nil];
 	if (viewController && viewController.view) {

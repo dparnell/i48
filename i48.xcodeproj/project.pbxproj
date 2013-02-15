@@ -20,6 +20,9 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		653025BF16CDFB2B003E018F /* MainView_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653025BE16CDFB2B003E018F /* MainView_retina4.xib */; };
+		653025C116CDFC8F003E018F /* MainView_froux_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653025C016CDFC8F003E018F /* MainView_froux_retina4.xib */; };
+		653025C516CE0155003E018F /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = 653025C416CE0155003E018F /* UIDevice+Resolutions.m */; };
 		653A91AA11C0BF6200A5CAB4 /* iPadMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */; };
 		655E47E30F94469C00F8AE5E /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BA0F94469C00F8AE5E /* device.c */; };
 		655E47E60F94469C00F8AE5E /* emulate.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BF0F94469C00F8AE5E /* emulate.c */; };
@@ -88,6 +91,10 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* i48_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48_Prefix.pch; sourceTree = "<group>"; };
+		653025BE16CDFB2B003E018F /* MainView_retina4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_retina4.xib; sourceTree = "<group>"; };
+		653025C016CDFC8F003E018F /* MainView_froux_retina4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_froux_retina4.xib; sourceTree = "<group>"; };
+		653025C316CE0155003E018F /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
+		653025C416CE0155003E018F /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
 		653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iPadMainMenu.xib; sourceTree = "<group>"; };
 		655E47B10F94469C00F8AE5E /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = emulator/actions.c; sourceTree = "<group>"; };
 		655E47B30F94469C00F8AE5E /* append.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = append.h; path = emulator/append.h; sourceTree = "<group>"; };
@@ -202,6 +209,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				653025C216CE011D003E018F /* Utilities */,
 				655E47B00F94468A00F8AE5E /* Emulator */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
@@ -229,6 +237,7 @@
 			children = (
 				65AD5ABC128E431A00C767E5 /* Common */,
 				65AD5ABB128E431400C767E5 /* iPhone */,
+				653025B916CDE49B003E018F /* Retina4 */,
 				65AD5ABA128E430D00C767E5 /* iPad */,
 			);
 			name = Resources;
@@ -244,6 +253,24 @@
 				65AD5BD2128EA4A800C767E5 /* CoreAudio.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		653025B916CDE49B003E018F /* Retina4 */ = {
+			isa = PBXGroup;
+			children = (
+				653025C016CDFC8F003E018F /* MainView_froux_retina4.xib */,
+				653025BE16CDFB2B003E018F /* MainView_retina4.xib */,
+			);
+			name = Retina4;
+			sourceTree = "<group>";
+		};
+		653025C216CE011D003E018F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				653025C316CE0155003E018F /* UIDevice+Resolutions.h */,
+				653025C416CE0155003E018F /* UIDevice+Resolutions.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		655E47B00F94468A00F8AE5E /* Emulator */ = {
@@ -301,8 +328,6 @@
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				657ADE73106A2908005EC323 /* MainView_froux.xib */,
-				657ADE76106A2919005EC323 /* HP48_froux.png */,
-				65F810A0101F0E8D00B94E0F /* background.png */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -310,6 +335,8 @@
 		65AD5ABC128E431A00C767E5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				657ADE76106A2919005EC323 /* HP48_froux.png */,
+				65F810A0101F0E8D00B94E0F /* background.png */,
 				6586E04E16142EB3005DC100 /* Default-568h@2x.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				65F810FE101F1EA700B94E0F /* about.html */,
@@ -401,6 +428,8 @@
 				65AD5B2D128E506600C767E5 /* MainView_froux_iPad.xib in Resources */,
 				658F6E61129544B400B68B3E /* icon.png in Resources */,
 				6586E04F16142EB3005DC100 /* Default-568h@2x.png in Resources */,
+				653025BF16CDFB2B003E018F /* MainView_retina4.xib in Resources */,
+				653025C116CDFC8F003E018F /* MainView_froux_retina4.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +459,7 @@
 				655E47F40F94469C00F8AE5E /* version.c in Sources */,
 				655E488B0F94535500F8AE5E /* actions.c in Sources */,
 				65FB18220F9B492500811E20 /* disasm.c in Sources */,
+				653025C516CE0155003E018F /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
