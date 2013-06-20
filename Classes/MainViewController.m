@@ -110,7 +110,7 @@ void init_display() {
 }
 
 void init_annunc() {
-	// do nothing
+	got_alarm = 1;
 }
 
 - (void) draw_annunc:(id)dummy {
@@ -354,12 +354,16 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
             [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithBool: NO] forKey: @"reset"];
             NSLog(@"Removing HP48 processor state file");
             [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat: @"%s/hp48", homeDirectory] error: nil];
+            initialize = 1;
             resetOnStartup = 1;
             saturn.PC = 0;
             do_reset();
         } else {
             resetOnStartup = 0;
         }
+        
+        // make sure that interrupts are enabled so that things will kick along!
+        saturn.intenable = 1;
         emulatorThread = [[[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil] retain];
         [emulatorThread setName: @"Emulator Thread"];
         [emulatorThread start];
