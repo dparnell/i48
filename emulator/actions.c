@@ -79,7 +79,9 @@
 
 #include "global.h"
 
+#if DEBUG_INTERRUPT || DEBUG_KBD_INT || DEBUG_SHUTDOWN || DEBUG_CONFIG || DEBUG_ID
 #include <stdio.h>
+#endif
 #include <stdlib.h>
 #include <unistd.h>
 

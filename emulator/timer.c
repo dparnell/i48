@@ -41,7 +41,6 @@
 #include "global.h"
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <unistd.h>
 #include <time.h>
 
@@ -49,7 +48,10 @@
 #include "romio.h"
 
 /* #define DEBUG_TIMER 1 */
-#define DEBUG_TIMER_ADJUST 1
+/* #define DEBUG_TIMER_ADJUST 1 */
+#if defined(DEBUG_TIMER) || defined(DEBUG_TIMER_ADJUST)
+#include <stdio.h>
+#endif
 
 #ifdef SOLARIS
 extern int gettimeofday __ProtoType__((struct timeval *tp));

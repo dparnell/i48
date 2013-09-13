@@ -63,7 +63,6 @@
 
 #include "global.h"
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
@@ -87,6 +86,9 @@
 extern int rece_instr;
 
 /* #define DEBUG_SERIAL */
+#ifdef DEBUG_SERIAL
+#include <stdio.h>
+#endif
 
 void
 update_connection_display(void)

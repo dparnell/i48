@@ -12,6 +12,6 @@
 	UIImage* _image;
 }
 
-@property(retain) UIImage* image;
+@property(strong) UIImage* image;
 
 @end

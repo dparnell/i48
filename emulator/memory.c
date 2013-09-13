@@ -69,7 +69,6 @@
 
 #include "global.h"
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
 #include <unistd.h>
@@ -90,7 +89,7 @@ extern long  port1_mask;
 extern short port2_is_ram;
 extern long  port2_mask;
 
-#define DEBUG_UNKNOWN 1
+/* #define DEBUG_UNKNOWN 1 */
 /* #define DEBUG_SERIAL 1 */
 /* #define DEBUG_SERIALb 1 */
 /* #define DEBUG_DISPLAY 1 */
@@ -100,6 +99,10 @@ extern long  port2_mask;
 /* #define DEBUG_BAD_MEM 1 */
 /* #define DEBUG_BASE_NIBBLE 1 */
 /* #define DEBUG_BANK_SWITCH 1 */
+
+#if DEBUG_UNKNOWN || DEBUG_SERIAL || DEBUG_SERIAL || DEBUG_DISPLAY || DEBUG_IR || DEBUG_CONTRAST || DEBUG_CARDS || DEBUG_BAD_MEM || DEBUG_BASE_NIBBLE || DEBUG_BANK_SWITCH
+#include <stdio.h>
+#endif
 
 long nibble_masks[16] = {
   0x0000000f,
@@ -421,9 +424,11 @@ int val;
       device.t2_touched = 1;
       return;
     default:
+#ifdef DEBUG_UNKNOWN
       if (!quiet)
         fprintf(stderr, "%.5lx: UNKNOWN DEVICE WRITE AT 0x%lx !!!\n",
                         saturn.PC, addr);
+#endif
       return;
   }
 }
@@ -545,9 +550,11 @@ long addr;
     case 0x13c: case 0x13d: case 0x13e: case 0x13f:
       return (saturn.timer2 >> ((addr - 0x138) * 4)) & 0xf;
     default:
+#ifdef DEBUG_UNKNOWN
       if (!quiet)
         fprintf(stderr, "%.5lx: UNKNOWN DEVICE READ AT 0x%lx !!!\n",
                         saturn.PC, addr);
+#endif
       return 0x00;
   }
 }

@@ -27,19 +27,12 @@
 }
 
 
-- (void)dealloc {
-	[_image release];
-	
-    [super dealloc];
-}
 
 - (UIImage*) image {
     return _image;
 }
 
 - (void) setImage:(UIImage *)img {
-	[img retain];
-	[_image release];
 	
 	_image = img;
 	

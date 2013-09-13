@@ -279,13 +279,13 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 - (void) emulatorThread:(id)dummy {		
 	BOOL limit_speed;
 	
-	NSAutoreleasePool* pool = [NSAutoreleasePool new];
-	NSLog(@"starting emulation thread");
-	fRunning = YES;
-	fKeyInterrupt = NO;
-	
-	limit_speed = [[NSUserDefaults standardUserDefaults] boolForKey: @"limit_speed"];
-	[pool release];
+	@autoreleasepool {
+		NSLog(@"starting emulation thread");
+		fRunning = YES;
+		fKeyInterrupt = NO;
+		
+		limit_speed = [[NSUserDefaults standardUserDefaults] boolForKey: @"limit_speed"];
+	}
 //	NSLog(@"calling emulate");
 	
 	emulate(limit_speed);
@@ -293,7 +293,6 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {		
-
     }
     return self;
 }
@@ -364,7 +363,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
         
         // make sure that interrupts are enabled so that things will kick along!
         saturn.intenable = 1;
-        emulatorThread = [[[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil] retain];
+        emulatorThread = [[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil];
         [emulatorThread setName: @"Emulator Thread"];
         [emulatorThread start];
     }
@@ -375,7 +374,11 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
     [super viewDidLoad];
     
     NSString *path = [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] pathForResource:@"Tock" ofType:@"aiff"];
-	AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &soundID);
+    if(path) {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundID);
+    } else {
+        soundID = 0;
+    }
 	
 	instance = self;
 	memset(&saturn, 0, sizeof(saturn));
@@ -476,9 +479,9 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 
 - (void)dealloc {
 	instance = nil;
-	AudioServicesDisposeSystemSoundID(soundID);
-	
-    [super dealloc];
+    if(soundID) {
+        AudioServicesDisposeSystemSoundID(soundID);
+	}
 }
 
 - (IBAction) buttonPressed:(UIButton*)sender {
@@ -487,11 +490,13 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 	
 	int i, r, c;
 	
-	NSNumber* play_click = [[NSUserDefaults standardUserDefaults] objectForKey: @"key_click"];
+    if(soundID) {
+        NSNumber* play_click = [[NSUserDefaults standardUserDefaults] objectForKey: @"key_click"];
 
-	if([play_click boolValue]) {
-		AudioServicesPlaySystemSound(soundID);
-	}
+        if([play_click boolValue]) {
+            AudioServicesPlaySystemSound(soundID);
+        }
+    }
 	
 	if (code == 0x8000) {
 		for (i = 0; i < 9; i++) {

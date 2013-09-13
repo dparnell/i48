@@ -46,7 +46,6 @@
 #include "global.h"
 
 #include <stdlib.h>
-#include <stdio.h>
 
 #include "hp48.h"
 #include "hp48_emu.h"

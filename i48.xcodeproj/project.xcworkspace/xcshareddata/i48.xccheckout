@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0EBA38CA-879C-4043-8FA2-EA4380D23598</string>
+	<key>IDESourceControlProjectName</key>
+	<string>i48</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</key>
+		<string>ssh://github.com/dparnell/i48.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>i48.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/dparnell/i48.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>i48</string>
+		</dict>
+	</array>
+</dict>
+</plist>

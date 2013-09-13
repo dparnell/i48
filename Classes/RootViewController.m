@@ -44,7 +44,6 @@
         self.view.backgroundColor = mainViewController.view.backgroundColor;
 		[self.view insertSubview:mainViewController.view belowSubview:infoButton];
 	}    
-	[viewController release];
 }
 
 
@@ -59,21 +58,17 @@
 	
 	
     self.flipsideViewController = viewController;
-    [viewController release];
 
 	CGRect r = viewController.view.frame;
     // Set up the navigation bar
     UINavigationBar *aNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0, 0.0, r.size.width, 44.0)];
     aNavigationBar.barStyle = UIBarStyleBlackOpaque;
     self.flipsideNavigationBar = aNavigationBar;
-    [aNavigationBar release];
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(toggleView)];
     UINavigationItem *navigationItem = [[UINavigationItem alloc] initWithTitle:@"i48"];
     navigationItem.rightBarButtonItem = buttonItem;
     [flipsideNavigationBar pushNavigationItem:navigationItem animated:NO];
-    [navigationItem release];
-    [buttonItem release];
 }
 
 
@@ -133,13 +128,6 @@
 }
 
 
-- (void)dealloc {
-    [infoButton release];
-    [flipsideNavigationBar release];
-    [mainViewController release];
-    [flipsideViewController release];
-    [super dealloc];
-}
 
 
 @end

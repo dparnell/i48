@@ -30,7 +30,6 @@
 		655E47EB0F94469C00F8AE5E /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47CB0F94469C00F8AE5E /* memory.c */; };
 		655E47EE0F94469C00F8AE5E /* register.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D00F94469C00F8AE5E /* register.c */; };
 		655E47F00F94469C00F8AE5E /* romio.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D30F94469C00F8AE5E /* romio.c */; };
-		655E47F10F94469C00F8AE5E /* rpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D50F94469C00F8AE5E /* rpl.c */; };
 		655E47F20F94469C00F8AE5E /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D70F94469C00F8AE5E /* serial.c */; };
 		655E47F30F94469C00F8AE5E /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47D90F94469C00F8AE5E /* timer.c */; };
 		655E47F40F94469C00F8AE5E /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47DB0F94469C00F8AE5E /* version.c */; };
@@ -55,7 +54,6 @@
 		65AD5BD3128EA4A800C767E5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD5BD2128EA4A800C767E5 /* CoreAudio.framework */; };
 		65F810A1101F0E8D00B94E0F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F810A0101F0E8D00B94E0F /* background.png */; };
 		65F810FF101F1EA700B94E0F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 65F810FE101F1EA700B94E0F /* about.html */; };
-		65FB18220F9B492500811E20 /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BC0F94469C00F8AE5E /* disasm.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -379,7 +377,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "i48" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -453,12 +451,10 @@
 				655E47EB0F94469C00F8AE5E /* memory.c in Sources */,
 				655E47EE0F94469C00F8AE5E /* register.c in Sources */,
 				655E47F00F94469C00F8AE5E /* romio.c in Sources */,
-				655E47F10F94469C00F8AE5E /* rpl.c in Sources */,
 				655E47F20F94469C00F8AE5E /* serial.c in Sources */,
 				655E47F30F94469C00F8AE5E /* timer.c in Sources */,
 				655E47F40F94469C00F8AE5E /* version.c in Sources */,
 				655E488B0F94535500F8AE5E /* actions.c in Sources */,
-				65FB18220F9B492500811E20 /* disasm.c in Sources */,
 				653025C516CE0155003E018F /* UIDevice+Resolutions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,10 +466,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
@@ -484,6 +477,7 @@
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = i48;
 				SDKROOT = iphoneos;
 			};
@@ -493,11 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7s,
-					armv7,
-					armv6,
-				);
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Parnell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Automagic Software Pty Ltd";
@@ -506,6 +496,7 @@
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = i48;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -515,10 +506,6 @@
 		6549BA4F10479BBD003A1C2D /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell (B4Z669Y8WX)";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -537,11 +524,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7s,
-					armv7,
-					armv6,
-				);
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -550,6 +533,7 @@
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = i48;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -561,10 +545,6 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
@@ -582,10 +562,6 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;

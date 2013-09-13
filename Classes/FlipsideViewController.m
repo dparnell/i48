@@ -16,7 +16,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
 	NSData* htmlData = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"about" ofType: @"html"]];
-	NSString* html = [[[NSString alloc] initWithData: htmlData encoding: NSUTF8StringEncoding] autorelease];
+	NSString* html = [[NSString alloc] initWithData: htmlData encoding: NSUTF8StringEncoding];
 	[webView loadHTMLString: html baseURL: nil];
 }
 
@@ -36,9 +36,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

@@ -29,13 +29,13 @@
 - (IBAction) buttonPressed:(UIButton*)sender;
 - (IBAction) buttonReleased:(UIButton*)sender;
 
-@property(nonatomic,retain) IBOutlet MainView* lcd;
+@property(nonatomic,strong) IBOutlet MainView* lcd;
 
-@property(nonatomic,retain) IBOutlet UIImageView* ann1;
-@property(nonatomic,retain) IBOutlet UIImageView* ann2;
-@property(nonatomic,retain) IBOutlet UIImageView* ann3;
-@property(nonatomic,retain) IBOutlet UIImageView* ann4;
-@property(nonatomic,retain) IBOutlet UIImageView* ann5;
-@property(nonatomic,retain) IBOutlet UIImageView* ann6;
+@property(nonatomic,strong) IBOutlet UIImageView* ann1;
+@property(nonatomic,strong) IBOutlet UIImageView* ann2;
+@property(nonatomic,strong) IBOutlet UIImageView* ann3;
+@property(nonatomic,strong) IBOutlet UIImageView* ann4;
+@property(nonatomic,strong) IBOutlet UIImageView* ann5;
+@property(nonatomic,strong) IBOutlet UIImageView* ann6;
 
 @end
