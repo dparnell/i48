@@ -35,6 +35,10 @@
 	} else {
         if(resolution == UIDeviceResolution_iPhoneRetina5) {
             skin = [skin stringByAppendingString: @"_retina4"];
+        } else {
+            if(resolution == UIDeviceResolution_iPhoneRetina4) {
+                skin = [skin stringByAppendingString: @"_retina35"];
+            }
         }
     }
 	
