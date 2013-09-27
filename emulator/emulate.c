@@ -58,6 +58,10 @@
 #define DEBUG_DISP_SCHED
 #endif
 
+#ifdef __APPLE__
+#include <unistd.h>
+#endif
+
 static long	jumpaddr;
 
 unsigned long	instructions = 0;
@@ -2419,12 +2423,14 @@ emulate(int limit_speed)
 emulate()
 #endif
 {
+#ifndef __APPLE__
   struct timeval  tv;
   struct timeval  tv2;
 #ifndef SOLARIS
   struct timezone tz;
 #endif
-
+#endif
+    
   reset_timer(T1_TIMER);
   reset_timer(RUN_TIMER);
   reset_timer(IDLE_TIMER);
@@ -2442,7 +2448,11 @@ emulate()
   do {
     step_instruction();
 
+      /* We need to throttle the speed here. */
 	if(limit_speed) {
+#ifdef __APPLE__
+        usleep(2);
+#else
 #ifdef SOLARIS
 		gettimeofday(&tv);
 #else
@@ -2454,9 +2464,8 @@ emulate()
 
 		tv2.tv_usec = tv.tv_usec;
 		tv2.tv_sec = tv.tv_sec;
+#endif
 	}
-//	  usleep(2);
-/* We need to throttle the speed here. */
 
     if (schedule_event < 0) {
 //puts("bug");
