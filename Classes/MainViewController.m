@@ -281,13 +281,12 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	
 	@autoreleasepool {
 		NSLog(@"starting emulation thread");
-		fRunning = YES;
-		fKeyInterrupt = NO;
-		
 		limit_speed = [[NSUserDefaults standardUserDefaults] boolForKey: @"limit_speed"];
 	}
 //	NSLog(@"calling emulate");
-	
+    fRunning = YES;
+    fKeyInterrupt = NO;
+    
 	emulate(limit_speed);
 }
 
@@ -354,15 +353,14 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
             NSLog(@"Removing HP48 processor state file");
             [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat: @"%s/hp48", homeDirectory] error: nil];
             initialize = 1;
-            resetOnStartup = 1;
-            saturn.PC = 0;
-            do_reset();
-        } else {
-            resetOnStartup = 0;
+//            saturn.PC = 0;
+//            do_reset();
         }
+
+        init_emulator();
+        init_active_stuff();
+//        resetOnStartup = YES;
         
-        // make sure that interrupts are enabled so that things will kick along!
-        saturn.intenable = 1;
         emulatorThread = [[NSThread alloc] initWithTarget: self selector: @selector(emulatorThread:) object: nil];
         [emulatorThread setName: @"Emulator Thread"];
         [emulatorThread start];
@@ -401,9 +399,6 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 	homeDirectory = strdup([documentsDirectory cStringUsingEncoding: NSUTF8StringEncoding]);
 	
 	romFileName = (char*)[[[NSBundle mainBundle] pathForResource: @"hp48" ofType: @"rom"] cStringUsingEncoding: NSUTF8StringEncoding];
-	init_emulator();
-	
-	init_active_stuff();
 
 #ifdef EMULATE_SOUND	
 	// start up the sound support
