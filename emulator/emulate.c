@@ -58,7 +58,8 @@
 #define DEBUG_DISP_SCHED
 #endif
 
-#ifdef __APPLE__
+//#define USE_USLEEP
+#ifdef USE_USLEEP
 #include <unistd.h>
 #endif
 
@@ -2423,7 +2424,7 @@ emulate(int limit_speed)
 emulate()
 #endif
 {
-#ifndef __APPLE__
+#ifndef USE_USLEEP
   struct timeval  tv;
   struct timeval  tv2;
 #ifndef SOLARIS
@@ -2450,7 +2451,7 @@ emulate()
 
       /* We need to throttle the speed here. */
 	if(limit_speed) {
-#ifdef __APPLE__
+#ifdef USE_USLEEP
         usleep(2);
 #else
 #ifdef SOLARIS
@@ -2458,12 +2459,12 @@ emulate()
 #else
 		gettimeofday(&tv, &tz);
 #endif
+		tv2.tv_usec = tv.tv_usec;
+		tv2.tv_sec = tv.tv_sec;
+        
 		while ((tv.tv_sec == tv2.tv_sec) && ((tv.tv_usec - tv2.tv_usec) < 2)) {
 			gettimeofday(&tv, &tz);
 		}
-
-		tv2.tv_usec = tv.tv_usec;
-		tv2.tv_sec = tv.tv_sec;
 #endif
 	}
 
