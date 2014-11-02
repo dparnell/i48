@@ -56,6 +56,7 @@
 		65AD5BD3128EA4A800C767E5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD5BD2128EA4A800C767E5 /* CoreAudio.framework */; };
 		65F810A1101F0E8D00B94E0F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F810A0101F0E8D00B94E0F /* background.png */; };
 		65F810FF101F1EA700B94E0F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 65F810FE101F1EA700B94E0F /* about.html */; };
+		65FD6D661A05F04C0067B1AC /* click.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 65FD6D651A05F04C0067B1AC /* click.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -147,6 +148,7 @@
 		65AED677129B24B200DA2205 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		65F810A0101F0E8D00B94E0F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		65F810FE101F1EA700B94E0F /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		65FD6D651A05F04C0067B1AC /* click.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = click.aiff; path = Sounds/click.aiff; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -347,6 +349,7 @@
 		65AD5ABC128E431A00C767E5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				65FD6D651A05F04C0067B1AC /* click.aiff */,
 				657ADE76106A2919005EC323 /* HP48_froux.png */,
 				65F810A0101F0E8D00B94E0F /* background.png */,
 				6586E04E16142EB3005DC100 /* Default-568h@2x.png */,
@@ -435,6 +438,7 @@
 				6581427817ED04B10030DBF3 /* MainView_froux_retina35.xib in Resources */,
 				655E4ABA0F97D4C300F8AE5E /* ann5.png in Resources */,
 				655E4ABB0F97D4C300F8AE5E /* ann6.png in Resources */,
+				65FD6D661A05F04C0067B1AC /* click.aiff in Resources */,
 				6570AA8C101C2B5C00275D68 /* icon_iPad.png in Resources */,
 				65F810A1101F0E8D00B94E0F /* background.png in Resources */,
 				65F810FF101F1EA700B94E0F /* about.html in Resources */,
@@ -490,7 +494,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Parnell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -499,7 +503,9 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = i48;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -511,7 +517,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Automagic Software Pty Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
@@ -519,6 +525,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = i48;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -548,7 +555,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = i48_Prefix.pch;

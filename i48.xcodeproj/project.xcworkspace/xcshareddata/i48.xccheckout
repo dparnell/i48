@@ -10,29 +10,29 @@
 	<string>i48</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</key>
-		<string>ssh://github.com/dparnell/i48.git</string>
+		<key>1C66E4223120C3EF379615872C1C63C57F92927B</key>
+		<string>github.com:dparnell/i48.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>i48.xcodeproj/project.xcworkspace</string>
+	<string>i48.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</key>
+		<key>1C66E4223120C3EF379615872C1C63C57F92927B</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/dparnell/i48.git</string>
+	<string>github.com:dparnell/i48.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</string>
+	<string>1C66E4223120C3EF379615872C1C63C57F92927B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4D23FD0A-B032-4ACE-BBB7-D624FD8BD9F3</string>
+			<string>1C66E4223120C3EF379615872C1C63C57F92927B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>i48</string>
 		</dict>

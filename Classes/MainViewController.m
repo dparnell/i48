@@ -371,7 +371,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *path = [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] pathForResource:@"Tock" ofType:@"aiff"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"click" ofType:@"aiff"];
     if(path) {
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundID);
     } else {
