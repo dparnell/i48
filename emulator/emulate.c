@@ -217,7 +217,7 @@ decode_group_80()
           saturn.CARRY = (get_register_bit(REG, op5) == t)?1:0;
 	  if (saturn.CARRY) {
 	    saturn.PC += 5;
-            op6 = read_nibbles(saturn.PC, 2);
+            op6 = (int)read_nibbles(saturn.PC, 2);
       	    if (op6) {
               if (op6 & 0x80)
                 op6 |= jumpmasks[2];
@@ -1036,7 +1036,7 @@ int op1;
           saturn.CARRY = is_zero_hardware_stat(op3);
 	  if (saturn.CARRY) {
 	    saturn.PC += 3;
-            op4 = read_nibbles(saturn.PC, 2);
+            op4 = (int)read_nibbles(saturn.PC, 2);
       	    if (op4) {
               if (op4 & 0x80)
                 op4 |= jumpmasks[2];
@@ -1069,7 +1069,7 @@ int op1;
             saturn.CARRY = (get_program_stat(op3) != 0)?1:0;
 	  if (saturn.CARRY) {
 	    saturn.PC += 3;
-            op4 = read_nibbles(saturn.PC, 2);
+            op4 = (int)read_nibbles(saturn.PC, 2);
       	    if (op4) {
               if (op4 & 0x80)
                 op4 |= jumpmasks[2];
@@ -1091,7 +1091,7 @@ int op1;
             saturn.CARRY = (saturn.P == op3)?1:0;
 	  if (saturn.CARRY) {
 	    saturn.PC += 3;
-            op4 = read_nibbles(saturn.PC, 2);
+            op4 = (int)read_nibbles(saturn.PC, 2);
       	    if (op4) {
               if (op4 & 0x80)
                 op4 |= jumpmasks[2];
@@ -1160,7 +1160,7 @@ int op1;
           }
 	  if (saturn.CARRY) {
 	    saturn.PC += 3;
-            op4 = read_nibbles(saturn.PC, 2);
+            op4 = (int)read_nibbles(saturn.PC, 2);
       	    if (op4) {
               if (op4 & 0x80)
                 op4 |= jumpmasks[2];
@@ -1229,7 +1229,7 @@ int op1;
           }
 	  if (saturn.CARRY) {
 	    saturn.PC += 3;
-            op4 = read_nibbles(saturn.PC, 2);
+            op4 = (int)read_nibbles(saturn.PC, 2);
       	    if (op4) {
               if (op4 & 0x80)
                 op4 |= jumpmasks[2];
@@ -1243,19 +1243,19 @@ int op1;
 	  }
           return 0;
 	case 0xc:
-          op3 = read_nibbles(saturn.PC + 2, 4);
+          op3 = (int)read_nibbles(saturn.PC + 2, 4);
           if (op3 & 0x8000)
             op3 |= jumpmasks[4];
           jumpaddr = (saturn.PC + op3 + 2) & 0xfffff;
           saturn.PC = jumpaddr;
 	  return 0;
 	case 0xd:
-          op3 = read_nibbles(saturn.PC + 2, 5);
+          op3 = (int)read_nibbles(saturn.PC + 2, 5);
           jumpaddr = op3;
           saturn.PC = jumpaddr;
 	  return 0;
 	case 0xe:
-          op3 = read_nibbles(saturn.PC + 2, 4);
+          op3 = (int)read_nibbles(saturn.PC + 2, 4);
           if (op3 & 0x8000)
             op3 |= jumpmasks[4];
           jumpaddr = (saturn.PC + op3 + 6) & 0xfffff;
@@ -1263,7 +1263,7 @@ int op1;
           saturn.PC = jumpaddr;
 	  return 0;
 	case 0xf:
-          op3 = read_nibbles(saturn.PC + 2, 5);
+          op3 = (int)read_nibbles(saturn.PC + 2, 5);
           jumpaddr = op3;
 	  push_return_addr(saturn.PC + 7);
           saturn.PC = jumpaddr;
@@ -1383,7 +1383,7 @@ int op1;
       }
       if (saturn.CARRY) {
 	saturn.PC += 3;
-        op4 = read_nibbles(saturn.PC, 2);
+        op4 = (int)read_nibbles(saturn.PC, 2);
       	if (op4) {
           if (op4 & 0x80)
             op4 |= jumpmasks[2];
@@ -2142,7 +2142,7 @@ step_instruction()
       saturn.PC += 3 + op2;
       break;
     case 4:
-      op2 = read_nibbles(saturn.PC + 1, 2);
+      op2 = (int)read_nibbles(saturn.PC + 1, 2);
       if (op2 == 0x02) {
         saturn.PC += 3;
       } else if (saturn.CARRY != 0) {
@@ -2160,7 +2160,7 @@ step_instruction()
       break;
     case 5:
       if (saturn.CARRY == 0) {
-	op2 = read_nibbles(saturn.PC + 1, 2);
+	op2 = (int)read_nibbles(saturn.PC + 1, 2);
         if (op2) {
           if (op2 & 0x80)
             op2 |= jumpmasks[2];
@@ -2174,11 +2174,11 @@ step_instruction()
       }
       break;
     case 6:
-      op2 = read_nibbles(saturn.PC + 1, 3);
+      op2 = (int)read_nibbles(saturn.PC + 1, 3);
       if (op2 == 0x003) {
         saturn.PC += 4;
       } else if(op2 == 0x004) {
-        op3 = read_nibbles(saturn.PC + 4, 1);
+        op3 = (int)read_nibbles(saturn.PC + 4, 1);
         saturn.PC += 5;
 		if (op3 != 0) {
 //          enter_debugger |= TRAP_INSTRUCTION;		  
@@ -2192,7 +2192,7 @@ step_instruction()
       }
       break;
     case 7:
-      op2 = read_nibbles(saturn.PC + 1, 3);
+      op2 = (int)read_nibbles(saturn.PC + 1, 3);
       if (op2 & 0x800)
         op2 |= jumpmasks[3];
       jumpaddr = (op2 + saturn.PC + 4) & 0xfffff;

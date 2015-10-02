@@ -1345,7 +1345,7 @@ read_files()
                 fprintf(stderr, "%s: can\'t malloc PORT1[%ld]\n",
                         progname, port1_size);
             }
-          else if (!read_mem_file(fnam, saturn.port1, port1_size))
+          else if (!read_mem_file(fnam, saturn.port1, (int)port1_size))
             {
               port1_size = 0;
               port1_is_ram = 0;
@@ -1388,7 +1388,7 @@ read_files()
                 fprintf(stderr, "%s: can\'t malloc PORT2[%ld]\n",
                         progname, port2_size);
             }
-          else if (!read_mem_file(fnam, saturn.port2, port2_size))
+          else if (!read_mem_file(fnam, saturn.port2, (int)port2_size))
             {
               port2_size = 0;
               port2_is_ram = 0;
@@ -1756,7 +1756,7 @@ write_files()
     {
       strcpy(fnam, path);
       strcat(fnam, "port1");
-      if (!write_mem_file(fnam, saturn.port1, port1_size))
+      if (!write_mem_file(fnam, saturn.port1, (int)port1_size))
         return 0;
     }
 
@@ -1764,7 +1764,7 @@ write_files()
     {
       strcpy(fnam, path);
       strcat(fnam, "port2");
-      if (!write_mem_file(fnam, saturn.port2, port2_size))
+      if (!write_mem_file(fnam, saturn.port2, (int)port2_size))
         return 0;
     }
 

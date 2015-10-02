@@ -248,7 +248,7 @@ void menu_draw_nibble(word_20 addr, word_4 val) {
 	
 	offset = (addr - display.menu_start);
     x = offset % NIBBLES_PER_ROW;
-    y = display.lines + (offset / NIBBLES_PER_ROW) + 1;
+    y = display.lines + (int)(offset / NIBBLES_PER_ROW) + 1;
 	dirty = YES;
 	draw_nibble(x, y, val);
 }
@@ -263,7 +263,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	if (x < 0 || x > 35)
 		return;
 	if (display.nibs_per_line != 0) {
-		y = offset / display.nibs_per_line;
+		y = (int)offset / display.nibs_per_line;
 		if (y < 0 || y > 63)
 			return;
 		dirty = YES;

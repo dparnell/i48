@@ -1511,7 +1511,7 @@ int len;
 #endif
 {
   while (len-- > 0) {
-    write_nibble(addr++, val);
+    write_nibble(addr++, (int)val);
     val >>= 4;
   }
 }

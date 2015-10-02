@@ -75,22 +75,22 @@ int *size;
   if (four[0] == 0x02 && four[1] == 0x03 &&
       four[2] == 0x06 && four[3] == 0x09)
     {
-      *size = file_size;
+      *size = (int)file_size;
     }
   else if (four[0] == 0x32 && four[1] == 0x96 &&
       four[2] == 0x1b && four[3] == 0x80)
     {
-      *size = 2 * file_size;
+      *size = 2 * (int)file_size;
     }
   else if ((four[1] = 0x49))
     {
       fprintf(stderr, "%s is an HP49 ROM\n", name);
-      *size = 2 * file_size;
+      *size = 2 * (int)file_size;
     }
   else if (four[0])
     {
       printf("%d\n", (int)file_size);
-      *size = file_size;
+      *size = (int)file_size;
     }
   else
     {
