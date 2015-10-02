@@ -19,17 +19,17 @@
     CGFloat pixelHeight = (CGRectGetHeight(mainScreen.bounds) * scale);
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
-        if (scale == 2.0f) {
+        if (scale >= 2.0f) {
             if (pixelHeight == 960.0f)
                 resolution = UIDeviceResolution_iPhoneRetina4;
-            else if (pixelHeight == 1136.0f)
+            else if (pixelHeight >= 1136.0f)
                 resolution = UIDeviceResolution_iPhoneRetina5;
             
         } else if (scale == 1.0f && pixelHeight == 480.0f)
             resolution = UIDeviceResolution_iPhoneStandard;
         
     } else {
-        if (scale == 2.0f && pixelHeight == 2048.0f) {
+        if (scale >= 2.0f && pixelHeight >= 2048.0f) {
             resolution = UIDeviceResolution_iPadRetina;
             
         } else if (scale == 1.0f && pixelHeight == 1024.0f) {
