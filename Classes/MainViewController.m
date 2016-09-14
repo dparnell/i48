@@ -287,6 +287,9 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 //	NSLog(@"calling emulate");
     fRunning = YES;
     fKeyInterrupt = NO;
+    dirty = YES;
+    update_display();
+    draw_annunc();
     
 	emulate(limit_speed);
 }
