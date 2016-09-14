@@ -1336,7 +1336,7 @@ read_files()
   strcat(fnam, "port1");
   if (stat(fnam, &st) >= 0)
     {
-      port1_size = 2 * st.st_size;
+      port1_size = 2 * (long)st.st_size;
       if ((port1_size == 0x10000) || (port1_size == 0x40000))
         {
           if (NULL == (saturn.port1 = (word_4 *)malloc(port1_size)))
@@ -1378,7 +1378,7 @@ read_files()
   strcat(fnam, "port2");
   if (stat(fnam, &st) >= 0)
     {
-      port2_size = 2 * st.st_size;
+      port2_size = 2 * (long)st.st_size;
       if ((opt_gx && ((port2_size % 0x40000) == 0)) ||
           (!opt_gx && ((port2_size == 0x10000) || (port2_size == 0x40000))))
         {

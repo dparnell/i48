@@ -235,6 +235,7 @@ draw_row(long addr, int row)
 	CGImageRef img = CGBitmapContextCreateImage(lcdContext);
 //	NSLog(@"img = %p", img);
 	_lcd.image = [UIImage imageWithCGImage: img];
+    CGImageRelease(img);
 }
 
 void update_display() {

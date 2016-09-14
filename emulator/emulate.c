@@ -169,7 +169,7 @@ decode_group_80()
           do_inton();
 	  return 0;
         case 1:		/* RSI... */
-          op5 = read_nibble(saturn.PC + 4);
+          read_nibble(saturn.PC + 4);
           saturn.PC += 5;
           do_reset_interrupt_system();
 	  return 0;

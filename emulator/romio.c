@@ -183,7 +183,7 @@ int *size;
 
   fclose(fp);
 
-  if ((*mem)[0x29] == 0x00)
+  if (mem[0x29] == 0x00)
     {
       if (*size == ROM_SIZE_GX)
         {
