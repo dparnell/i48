@@ -465,9 +465,11 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
     emulatorThread = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)didReceiveMemoryWarning {
