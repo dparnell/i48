@@ -2413,9 +2413,12 @@ schedule()
 #ifdef HAVE_XSHM
     if (disp.display_update) refresh_display();
 #endif
+      update_display();
     GetEvent();
   }
 }
+
+int stop_emulation = 0;
 
 int
 #ifdef __FunctionProto__
@@ -2446,6 +2449,7 @@ emulate()
 
   set_t1 = saturn.timer1;
 
+  stop_emulation = 0;
   do {
     step_instruction();
 
@@ -2476,7 +2480,7 @@ emulate()
       {
         schedule();
       }
-  } while (1);
+  } while (stop_emulation == 0);
 
   return 0;
 }

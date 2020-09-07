@@ -240,6 +240,8 @@ typedef struct saturn_t {
 
 #define NIBBLES_PER_ROW 0x22
 
+extern int      stop_emulation;
+
 extern int		got_alarm;
 
 extern int		set_t1;

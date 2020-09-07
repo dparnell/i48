@@ -33,7 +33,6 @@
 }
 
 - (void) setImage:(UIImage *)img {
-	
 	_image = img;
 	
 	[self setNeedsDisplay];

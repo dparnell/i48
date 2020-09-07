@@ -65,11 +65,15 @@ int GetEvent() {
 	return 0;
 }
 
+void refresh_display() {
+    dirty = YES;
+}
+
 void pause_emulation() {
 	if(dirty) {
+        update_display();
 		dirty = NO;
-//		NSLog(@"dirty");
-		update_display();
+		// NSLog(@"dirty");
 	}
 	
 	[NSThread sleepForTimeInterval: 0.02];
@@ -97,9 +101,8 @@ void init_display() {
 		display.nibs_per_line = (NIBBLES_PER_ROW+saturn.line_offset) & 0xfff;
 	}
 	
-	display.disp_end = display.disp_start +
-	(display.nibs_per_line * (display.lines + 1));
-	
+	display.disp_end = display.disp_start + (display.nibs_per_line * (display.lines + 1));
+
 	display.menu_start = saturn.menu_addr;
 	display.menu_end = saturn.menu_addr + 0x110;
 	
@@ -125,7 +128,9 @@ void init_annunc() {
 }
 
 void draw_annunc() {
-	[instance performSelectorOnMainThread: @selector(draw_annunc:) withObject: nil waitUntilDone: YES];
+    if(stop_emulation == 0) {
+        [instance performSelectorOnMainThread: @selector(draw_annunc:) withObject: nil waitUntilDone: YES];
+    }
 }
 
 #define BACKGROUND_PIXEL 0x5CDDCA
@@ -239,7 +244,9 @@ draw_row(long addr, int row)
 }
 
 void update_display() {
-	[instance performSelectorOnMainThread: @selector(update_display) withObject: nil waitUntilDone: YES];
+    if(stop_emulation == 0) {
+        [instance performSelectorOnMainThread: @selector(update_display) withObject: nil waitUntilDone: YES];
+    }
 }
 
 void menu_draw_nibble(word_20 addr, word_4 val) {
@@ -292,6 +299,8 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
     draw_annunc();
     
 	emulate(limit_speed);
+    
+    exit_emulator();
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -457,11 +466,14 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 }
 
 - (void)timeToDie:(id)dummy {
-	fRunning = NO;
-    got_alarm = 1;
+    NSLog(@"Shutting the emulation down...");
 	while(emulatorThread && ![emulatorThread isFinished]) {
+        fRunning = NO;
+        stop_emulation = 1;
+        got_alarm = 1;
 		[NSThread sleepForTimeInterval: 0.1];
 	}
+    NSLog(@"Emulation stopped!");
     emulatorThread = nil;
 }
 
@@ -537,6 +549,7 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 		saturn.keybuf.rows[r] &= ~c;
 	}
 	
+    got_alarm = 1;
 }
 
 

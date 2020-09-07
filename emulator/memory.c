@@ -92,7 +92,7 @@ extern long  port2_mask;
 /* #define DEBUG_UNKNOWN 1 */
 /* #define DEBUG_SERIAL 1 */
 /* #define DEBUG_SERIALb 1 */
-/* #define DEBUG_DISPLAY 1 */
+//#define DEBUG_DISPLAY 1
 /* #define DEBUG_IR 1 */
 /* #define DEBUG_CONTRAST 1 */
 /* #define DEBUG_CARDS 1 */
@@ -162,13 +162,10 @@ int val;
         display.offset = val & 0x7;
 //        disp.offset = 2 * display.offset;
         if (display.offset > 3)
-          display.nibs_per_line =
-                  (NIBBLES_PER_ROW+saturn.line_offset+2) & 0xfff;
+          display.nibs_per_line = (NIBBLES_PER_ROW + saturn.line_offset+2) & 0xfff;
         else
-          display.nibs_per_line =
-                  (NIBBLES_PER_ROW+saturn.line_offset) & 0xfff;
-        display.disp_end = display.disp_start +
-		           (display.nibs_per_line * (display.lines + 1));
+          display.nibs_per_line = (NIBBLES_PER_ROW + saturn.line_offset) & 0xfff;
+        display.disp_end = display.disp_start + (display.nibs_per_line * (display.lines + 1));
         device.display_touched = DISP_INSTR_OFF;
       }
 #ifdef DEBUG_DISPLAY
@@ -331,8 +328,7 @@ int val;
       saturn.disp_addr |= val << ((addr - 0x120) * 4);
       if (display.disp_start != (saturn.disp_addr & 0xffffe)) {
         display.disp_start = saturn.disp_addr & 0xffffe;
-        display.disp_end = display.disp_start +
-		           (display.nibs_per_line * (display.lines + 1));
+        display.disp_end = display.disp_start + (display.nibs_per_line * (display.lines + 1));
         device.display_touched = DISP_INSTR_OFF;
       }
 #ifdef DEBUG_DISPLAY
@@ -345,14 +341,13 @@ int val;
       saturn.line_offset |= val << ((addr - 0x125) * 4);
       if (saturn.line_offset != old_line_offset) {
         old_line_offset = saturn.line_offset;
+          
         if (display.offset > 3)
-          display.nibs_per_line =
-                  (NIBBLES_PER_ROW+saturn.line_offset+2) & 0xfff;
+          display.nibs_per_line = (NIBBLES_PER_ROW+saturn.line_offset+2) & 0xfff;
         else
-          display.nibs_per_line =
-                  (NIBBLES_PER_ROW+saturn.line_offset) & 0xfff;
-        display.disp_end = display.disp_start +
-		           (display.nibs_per_line * (display.lines + 1));
+          display.nibs_per_line = (NIBBLES_PER_ROW+saturn.line_offset) & 0xfff;
+          
+        display.disp_end = display.disp_start + (display.nibs_per_line * (display.lines + 1));
         device.display_touched = DISP_INSTR_OFF;
       }
 #ifdef DEBUG_DISPLAY
@@ -367,11 +362,11 @@ int val;
       line_counter = -1;
       if (display.lines != (saturn.line_count & 0x3f)) {
         display.lines = saturn.line_count & 0x3f;
-	if (display.lines == 0)
+          
+	    if (display.lines == 0)
           display.lines = 63;
 //        disp.lines = 2 * display.lines;
-        display.disp_end = display.disp_start +
-		           (display.nibs_per_line * (display.lines + 1));
+        display.disp_end = display.disp_start + (display.nibs_per_line * (display.lines + 1));
         device.display_touched = DISP_INSTR_OFF;
       }
 #ifdef DEBUG_DISPLAY

@@ -26,7 +26,11 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.12</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>

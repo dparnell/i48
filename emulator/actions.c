@@ -623,7 +623,8 @@ do_shutdown()
 #ifdef HAVE_XSHM
       if (disp.display_update) refresh_display();
 #endif
-
+        update_display();
+        
       ticks = get_t1_t2();
       if (saturn.t2_ctrl & 0x01) {
         saturn.timer2 = ticks.t2_ticks;

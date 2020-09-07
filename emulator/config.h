@@ -49,7 +49,7 @@
 /*
  * If you don't have the XShm extension, comment the following line
  */
-#define HAVE_XSHM
+// #define HAVE_XSHM
 
 /*
  * If you don't want to use the readline library,
