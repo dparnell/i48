@@ -20,6 +20,10 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		65295C812506609600913526 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65295C802506609600913526 /* Media.xcassets */; };
+		65295C832506E92A00913526 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 65295C822506E92900913526 /* icon-120.png */; };
+		65295C852506E93B00913526 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 65295C842506E93B00913526 /* icon-76.png */; };
+		65295C872506E94600913526 /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 65295C862506E94600913526 /* icon-152.png */; };
 		653025BF16CDFB2B003E018F /* MainView_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653025BE16CDFB2B003E018F /* MainView_retina4.xib */; };
 		653025C116CDFC8F003E018F /* MainView_froux_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653025C016CDFC8F003E018F /* MainView_froux_retina4.xib */; };
 		653025C516CE0155003E018F /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = 653025C416CE0155003E018F /* UIDevice+Resolutions.m */; };
@@ -94,6 +98,10 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* i48_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = i48_Prefix.pch; sourceTree = "<group>"; };
+		65295C802506609600913526 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		65295C822506E92900913526 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-120.png"; path = "App Store Suff/icon-120.png"; sourceTree = "<group>"; };
+		65295C842506E93B00913526 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76.png"; path = "App Store Suff/icon-76.png"; sourceTree = "<group>"; };
+		65295C862506E94600913526 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-152.png"; path = "App Store Suff/icon-152.png"; sourceTree = "<group>"; };
 		653025BE16CDFB2B003E018F /* MainView_retina4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_retina4.xib; sourceTree = "<group>"; };
 		653025C016CDFC8F003E018F /* MainView_froux_retina4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_froux_retina4.xib; sourceTree = "<group>"; };
 		653025C316CE0155003E018F /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
@@ -246,6 +254,7 @@
 				6581427517ED04560030DBF3 /* Retina 3.5 inch */,
 				653025B916CDE49B003E018F /* Retina 4 inch */,
 				65AD5ABA128E430D00C767E5 /* iPad */,
+				65295C802506609600913526 /* Media.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -351,6 +360,9 @@
 		65AD5ABC128E431A00C767E5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				65295C862506E94600913526 /* icon-152.png */,
+				65295C842506E93B00913526 /* icon-76.png */,
+				65295C822506E92900913526 /* icon-120.png */,
 				65FD6D651A05F04C0067B1AC /* click.aiff */,
 				657ADE76106A2919005EC323 /* HP48_froux.png */,
 				65F810A0101F0E8D00B94E0F /* background.png */,
@@ -430,6 +442,8 @@
 			files = (
 				6581427917ED04B10030DBF3 /* MainView_retina35.xib in Resources */,
 				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
+				65295C872506E94600913526 /* icon-152.png in Resources */,
+				65295C812506609600913526 /* Media.xcassets in Resources */,
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				655E4A160F94B29E00F8AE5E /* hp48.rom in Resources */,
@@ -438,6 +452,7 @@
 				655E4AB80F97D4C300F8AE5E /* ann3.png in Resources */,
 				655E4AB90F97D4C300F8AE5E /* ann4.png in Resources */,
 				6581427817ED04B10030DBF3 /* MainView_froux_retina35.xib in Resources */,
+				65295C852506E93B00913526 /* icon-76.png in Resources */,
 				655E4ABA0F97D4C300F8AE5E /* ann5.png in Resources */,
 				655E4ABB0F97D4C300F8AE5E /* ann6.png in Resources */,
 				65FD6D661A05F04C0067B1AC /* click.aiff in Resources */,
@@ -448,6 +463,7 @@
 				657ADE74106A2908005EC323 /* MainView_froux.xib in Resources */,
 				657ADE77106A2919005EC323 /* HP48_froux.png in Resources */,
 				653A91AA11C0BF6200A5CAB4 /* iPadMainMenu.xib in Resources */,
+				65295C832506E92A00913526 /* icon-120.png in Resources */,
 				65AD5AB4128E42C400C767E5 /* MainView_iPad.xib in Resources */,
 				65AD5B21128E502900C767E5 /* FlipsideView_iPad.xib in Resources */,
 				65AD5B2D128E506600C767E5 /* MainView_froux_iPad.xib in Resources */,
@@ -493,12 +509,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.13;
+				CURRENT_PROJECT_VERSION = 202009080844;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -518,12 +535,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.13;
+				CURRENT_PROJECT_VERSION = 202009080844;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
@@ -583,12 +601,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.13;
+				CURRENT_PROJECT_VERSION = 202009080844;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = i48_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
