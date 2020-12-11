@@ -18,7 +18,7 @@
     CGFloat scale = ([mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f);
     CGFloat pixelHeight = (CGRectGetHeight(mainScreen.bounds) * scale);
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+    if ([self userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         if (scale >= 2.0f) {
             if (pixelHeight == 960.0f)
                 resolution = UIDeviceResolution_iPhoneRetina4;

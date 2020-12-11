@@ -22,7 +22,8 @@
 - (void)viewDidLoad {	
     [super viewDidLoad];
 
-    UIDeviceResolution resolution = [[UIDevice currentDevice] resolution];
+    UIDevice* device = [UIDevice currentDevice];
+    UIDeviceResolution resolution = [device resolution];
 	
 	NSString* skin = [[NSUserDefaults standardUserDefaults] objectForKey: @"skin"];
 	
@@ -30,7 +31,7 @@
         skin = @"MainView";
     }
     
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+	if([device userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		skin = [skin stringByAppendingString: @"_iPad"];
 	} else {
         if(resolution == UIDeviceResolution_iPhoneRetina5) {
@@ -54,7 +55,7 @@
 - (void)loadFlipsideViewController {    
     FlipsideViewController *viewController;
 	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+	if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		viewController = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView_iPad" bundle:nil];
 	} else {
 		viewController = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
@@ -66,7 +67,7 @@
 	CGRect r = viewController.view.frame;
     // Set up the navigation bar
     UINavigationBar *aNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0, 0.0, r.size.width, 44.0)];
-    aNavigationBar.barStyle = UIBarStyleBlackOpaque;
+    aNavigationBar.barStyle = UIBarStyleBlack;
     self.flipsideNavigationBar = aNavigationBar;
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(toggleView)];
@@ -87,32 +88,36 @@
     
     UIView *mainView = mainViewController.view;
     UIView *flipsideView = flipsideViewController.view;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:1];
-    [UIView setAnimationTransition:([mainView superview] ? UIViewAnimationTransitionFlipFromRight : UIViewAnimationTransitionFlipFromLeft) forView:self.view cache:YES];
-    
-    if ([mainView superview] != nil) {
-        [flipsideViewController viewWillAppear:YES];
-        [mainViewController viewWillDisappear:YES];
-        [mainView removeFromSuperview];
-        [infoButton removeFromSuperview];
-        [self.view addSubview:flipsideView];
-        [self.view insertSubview:flipsideNavigationBar aboveSubview:flipsideView];
-        [mainViewController viewDidDisappear:YES];
-        [flipsideViewController viewDidAppear:YES];
 
-    } else {
-        [mainViewController viewWillAppear:YES];
-        [flipsideViewController viewWillDisappear:YES];
-        [flipsideView removeFromSuperview];
-        [flipsideNavigationBar removeFromSuperview];
-        [self.view addSubview:mainView];
-        [self.view insertSubview:infoButton aboveSubview:mainViewController.view];
-        [flipsideViewController viewDidDisappear:YES];
-        [mainViewController viewDidAppear:YES];
-    }
-    [UIView commitAnimations];
+    [UIView transitionWithView:self.view
+                      duration:1.0
+                       options:([mainView superview] ? UIViewAnimationOptionTransitionFlipFromRight : UIViewAnimationOptionTransitionFlipFromLeft)
+                    animations:^{
+        if ([mainView superview] != nil) {
+            [self.flipsideViewController viewWillAppear:YES];
+            [self.mainViewController viewWillDisappear:YES];
+            [mainView removeFromSuperview];
+            [self.infoButton removeFromSuperview];
+            [self.view addSubview:flipsideView];
+            [self.view insertSubview: self.flipsideNavigationBar aboveSubview:flipsideView];
+            [self.mainViewController viewDidDisappear:YES];
+            [self.flipsideViewController viewDidAppear:YES];
+        } else {
+            [self.mainViewController viewWillAppear:YES];
+            [self.flipsideViewController viewWillDisappear:YES];
+            [flipsideView removeFromSuperview];
+            [self.flipsideNavigationBar removeFromSuperview];
+            [self.view addSubview:mainView];
+            [self.view insertSubview: self.infoButton aboveSubview: self.mainViewController.view];
+            [self.flipsideViewController viewDidDisappear:YES];
+            [self.mainViewController viewDidAppear:YES];
+        }
+    } completion: nil];
+    
+    [UIView animateWithDuration: 1.0 animations: ^{
+        
+
+    }];
 }
 
 
