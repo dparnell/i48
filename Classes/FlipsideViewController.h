@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @interface FlipsideViewController : UIViewController {
-	IBOutlet UIWebView* webView;
+	IBOutlet WKWebView* webView;
 }
 
 @end

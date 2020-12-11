@@ -49,9 +49,9 @@
  * $Id: device.c,v 1.8 1995/01/11 18:20:01 ecd Exp ecd $
  */
 
-#include "global.h"
+//#include "global.h"
 
-#include <stdlib.h>
+//#include <stdlib.h>
 
 #include "hp48.h"
 #include "hp48_emu.h"

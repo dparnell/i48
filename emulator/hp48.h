@@ -65,7 +65,7 @@
 
 #include "global.h"
 
-#include <sys/time.h>
+//#include <sys/time.h>
 
 #include "mmu.h"
 

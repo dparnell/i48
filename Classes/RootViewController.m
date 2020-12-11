@@ -70,7 +70,7 @@
     self.flipsideNavigationBar = aNavigationBar;
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(toggleView)];
-    UINavigationItem *navigationItem = [[UINavigationItem alloc] initWithTitle:@"i48"];
+    UINavigationItem *navigationItem = [[UINavigationItem alloc] initWithTitle: NSLocalizedString(@"i48", @"Application Title")];
     navigationItem.rightBarButtonItem = buttonItem;
     [flipsideNavigationBar pushNavigationItem:navigationItem animated:NO];
 }

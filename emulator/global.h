@@ -60,7 +60,7 @@
 #endif
 
 #if !defined(__GNUC__) || defined(__STRICT_ANSI__)
-#define inline 
+//#define inline 
 #if !defined(__STDC__)
 #define const
 #endif

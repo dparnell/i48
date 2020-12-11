@@ -1322,6 +1322,8 @@ read_files()
       fprintf(stderr, "%s: can\'t open %s\n", progname, fnam);
     return 0;
   }
+  fclose(fp);
+    
   if (!read_mem_file(fnam, saturn.ram, ram_size))
     return 0;
 
