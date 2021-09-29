@@ -127,6 +127,6 @@ extern void 	menu_draw_nibble   __ProtoType__((word_20 addr, word_4 val));
 extern void     draw_annunc	   __ProtoType__((void));
 extern void     redraw_annunc	   __ProtoType__((void));
 
-extern int     GetEvent	   __ProtoType__((void));
-
+extern int      GetEvent	   __ProtoType__((void));
+extern void     refresh_display    __ProtoType__((void));
 #endif /* !_DEVICE_H */

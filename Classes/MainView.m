@@ -19,6 +19,8 @@
 
 - (void)drawRect:(CGRect)rect {
 	if(_image) {
+        // NSLog(@"bounds: %f %f %f %f", self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height);
+        
 		[_image drawInRect: self.bounds];
 	} else {
 		[super drawRect: rect];

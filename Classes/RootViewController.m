@@ -26,7 +26,8 @@
     UIDeviceResolution resolution = [device resolution];
 	
 	NSString* skin = [[NSUserDefaults standardUserDefaults] objectForKey: @"skin"];
-	
+    BOOL scaleViews = NO;
+    
     if(skin == nil) {
         skin = @"MainView";
     }
@@ -34,21 +35,34 @@
 	if([device userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		skin = [skin stringByAppendingString: @"_iPad"];
 	} else {
-        if(resolution == UIDeviceResolution_iPhoneRetina5) {
-            skin = [skin stringByAppendingString: @"_retina4"];
-        } else {
-            if(resolution == UIDeviceResolution_iPhoneRetina4) {
-                skin = [skin stringByAppendingString: @"_retina35"];
-            }
+        if(resolution == UIDeviceResolution_iPhoneRetina5 || resolution == UIDeviceResolution_iPhoneRetina4) {
+            skin = [skin stringByAppendingString: @"_retina35"];
+            scaleViews = YES;
         }
     }
 	
     MainViewController *viewController = [[MainViewController alloc] initWithNibName: skin bundle:nil];
 	if (viewController && viewController.view) {
 		self.mainViewController = viewController;
-        self.view.backgroundColor = mainViewController.view.backgroundColor;
-		[self.view insertSubview:mainViewController.view belowSubview:infoButton];
-	}    
+        self.view.backgroundColor = viewController.view.backgroundColor;
+        
+        if(scaleViews) {
+            float scaleX = self.view.bounds.size.width / viewController.view.frame.size.width;
+            float scaleY = self.view.bounds.size.height / viewController.view.frame.size.height;
+
+            for(UIView* v in viewController.view.subviews) {
+                CGRect f = v.frame;
+                f.size.width = floor(f.size.width * scaleX);
+                f.size.height = floor(f.size.height * scaleY);
+                f.origin.x = floor(f.origin.x * scaleX);
+                f.origin.y = floor(f.origin.y * scaleY);
+                
+                v.frame = f;
+            }
+        }
+        
+		[self.view insertSubview: viewController.view belowSubview:infoButton];
+	}
 }
 
 
