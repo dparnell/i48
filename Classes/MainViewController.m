@@ -299,6 +299,7 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
     draw_annunc();
     
 	emulate(limit_speed);
+    do_shutdown();
     
     exit_emulator();
 }

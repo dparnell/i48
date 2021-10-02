@@ -2474,7 +2474,7 @@ emulate()
 
     if (schedule_event < 0) {
 //puts("bug");
-//	schedule_event = 0;
+	schedule_event = 0;
     }
     if (schedule_event-- <= 0)
       {
