@@ -289,7 +289,12 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 	
 	@autoreleasepool {
 		NSLog(@"starting emulation thread");
-		limit_speed = [[NSUserDefaults standardUserDefaults] boolForKey: @"limit_speed"];
+        NSNumber* limit_pref = [[NSUserDefaults standardUserDefaults] objectForKey: @"limit_speed"];
+        if(limit_pref) {
+            limit_speed = [limit_pref boolValue];
+        } else {
+            limit_speed = YES;
+        }
 	}
 //	NSLog(@"calling emulate");
     fRunning = YES;
