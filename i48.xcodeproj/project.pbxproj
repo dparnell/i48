@@ -23,6 +23,7 @@
 		65295C812506609600913526 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65295C802506609600913526 /* Media.xcassets */; };
 		653025C516CE0155003E018F /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = 653025C416CE0155003E018F /* UIDevice+Resolutions.m */; };
 		653A91AA11C0BF6200A5CAB4 /* iPadMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */; };
+		654B7D73278134E9004B3D7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654B7D72278134E9004B3D7D /* AVFoundation.framework */; };
 		655E47E30F94469C00F8AE5E /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BA0F94469C00F8AE5E /* device.c */; };
 		655E47E60F94469C00F8AE5E /* emulate.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47BF0F94469C00F8AE5E /* emulate.c */; };
 		655E47E80F94469C00F8AE5E /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = 655E47C80F94469C00F8AE5E /* init.c */; };
@@ -97,6 +98,7 @@
 		653025C316CE0155003E018F /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
 		653025C416CE0155003E018F /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
 		653A91A911C0BF6200A5CAB4 /* iPadMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iPadMainMenu.xib; sourceTree = "<group>"; };
+		654B7D72278134E9004B3D7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		655E47B10F94469C00F8AE5E /* actions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actions.c; path = emulator/actions.c; sourceTree = "<group>"; };
 		655E47B30F94469C00F8AE5E /* append.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = append.h; path = emulator/append.h; sourceTree = "<group>"; };
 		655E47B60F94469C00F8AE5E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = emulator/config.h; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654B7D73278134E9004B3D7D /* AVFoundation.framework in Frameworks */,
 				65FDD1C425831AF600BD5747 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				65FDD1C625831AFF00BD5747 /* WebKit.framework in Frameworks */,
@@ -250,6 +253,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				654B7D72278134E9004B3D7D /* AVFoundation.framework */,
 				65FDD1C525831AFF00BD5747 /* WebKit.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -553,7 +557,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = USE_USLEEP;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -622,7 +626,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = USE_USLEEP;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -663,7 +667,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = USE_USLEEP;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

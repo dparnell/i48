@@ -178,8 +178,6 @@ check_devices()
 #endif
 }
 
-static char last_state = 0;
-
 void
 #ifdef __FunctionProto__
 check_out_register(void)
@@ -187,9 +185,8 @@ check_out_register(void)
 check_out_register()
 #endif
 {
-	char state = (saturn.OUT[2] & 0x8) == 0x8;
-	if (state != last_state) {
-		device.speaker_counter++;
-		last_state = state;
-	}
+    char s = (saturn.OUT[2] & 0x8) == 0x8;
+    if(s != device.speaker_state) {
+        device.speaker_transition_count++;
+    }
 }

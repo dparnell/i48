@@ -51,14 +51,20 @@
 #include "device.h"
 #include "timer.h"
 
-#if 0
 #include <stdio.h>
+#if 0
 #define DEBUG_TIMER
 #define DEBUG_SCHED
 #define DEBUG_DISP_SCHED
 #endif
 
-//#define USE_USLEEP
+#define USE_MACH
+#ifdef USE_MACH
+#include <mach/mach.h>
+#include <mach/mach_time.h>
+#include <time.h>
+#endif
+
 #ifdef USE_USLEEP
 #include <unistd.h>
 #endif
@@ -2288,8 +2294,15 @@ schedule()
     sched_adjtime = SCHED_ADJTIME;
 
     if (saturn.PC < SrvcIoStart || saturn.PC > SrvcIoEnd) {
-
+#if 0
+//#ifdef USE_MACH
+        uint64_t now = clock_gettime_nsec_np(_CLOCK_UPTIME_RAW);
+        ticks.t1_ticks = 0xf - ((now / 62500000) & 0xf);
+        ticks.t2_ticks = 0x1fff - ((now / 122070) & 0x1fff);
+        // printf("T1=%d\n", (int)ticks.t1_ticks);
+#else
       ticks = get_t1_t2();
+#endif
       if (saturn.t2_ctrl & 0x01) {
         saturn.timer2 = ticks.t2_ticks;
       }
@@ -2303,7 +2316,7 @@ schedule()
 
       adj_time_pending = 0;
 
-      saturn.timer1 = set_t1 - ticks.t1_ticks;
+      saturn.timer1 = ticks.t1_ticks;
       if ((saturn.t1_ctrl & 0x08) == 0 && saturn.timer1 <= 0) {
         if (saturn.t1_ctrl & 0x02) {
           saturn.t1_ctrl |= 0x08;
@@ -2311,11 +2324,8 @@ schedule()
         }
       }
       saturn.timer1 &= 0x0f;
-
     } else {
-
       adj_time_pending = 1;
-
     }
   }
   if (sched_adjtime < schedule_event) schedule_event = sched_adjtime;
@@ -2427,11 +2437,14 @@ emulate(int limit_speed)
 emulate()
 #endif
 {
+#ifdef USE_MACH
+#else
 #ifndef USE_USLEEP
   struct timeval  tv;
   struct timeval  tv2;
 #ifndef SOLARIS
   struct timezone tz;
+#endif
 #endif
 #endif
     
@@ -2455,6 +2468,11 @@ emulate()
 
       /* We need to throttle the speed here. */
 	if(limit_speed) {
+#ifdef USE_MACH
+        uint64_t now = mach_absolute_time();
+        
+        mach_wait_until(now + 1);
+#else
 #ifdef USE_USLEEP
         usleep(2);
 #else
@@ -2469,6 +2487,7 @@ emulate()
 		while ((tv.tv_sec == tv2.tv_sec) && ((tv.tv_usec - tv2.tv_usec) < 2)) {
 			gettimeofday(&tv, &tz);
 		}
+#endif
 #endif
 	}
 

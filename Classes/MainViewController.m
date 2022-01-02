@@ -13,7 +13,9 @@
 #import "hp48_emu.h"
 #import "device.h"
 
-//#define EMULATE_SOUND
+#define EMULATE_SOUND
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 static MainViewController* instance = nil;
 
@@ -316,50 +318,44 @@ void disp_draw_nibble(word_20 addr, word_4 val) {
 }
 
 #ifdef EMULATE_SOUND
-#define BUFFER_SIZE 1000
-#define BUFFER_COUNT 2
-#define SAMPLE_RATE 44100
+#define BUFFER_SAMPLE_SIZE 1024
+#define BUFFER_SIZE (BUFFER_SAMPLE_SIZE * sizeof(short))
+#define BUFFER_COUNT 4
+#define SAMPLE_RATE 8000
 
-static AudioQueueRef audioQueue;
-static int freq_counter = 0;
-static char speaker_state = 0;
-static CFTimeInterval last_time = 0;
+static AudioQueueRef audioQueue = 0;
+static BOOL currentSpeakerValue = NO;
 
 void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
                         AudioQueueBufferRef inBuffer) {
     short* pBuffer = inBuffer->mAudioData;
     UInt32 bytes = inBuffer->mAudioDataBytesCapacity;
-	
-	CFTimeInterval now = CFAbsoluteTimeGetCurrent();
-	int count = device.speaker_counter;
-	if(last_time && count) {
-		CFTimeInterval deltaT = now-last_time;
-		float freq = count/deltaT;
-//		freq = 1000;
-		int delta = SAMPLE_RATE / freq;
-//		NSLog(@"count = %d, deltaT = %f, freq = %f, delta = %d", count, deltaT, freq, delta);
-//		delta = 44;
-		device.speaker_counter = 0;
-		for(int i=0; i<bytes>>1; i++) {
-			freq_counter--;
-			if (freq_counter<0) {
-				freq_counter = delta;
-				speaker_state = !speaker_state;
-			}
-			pBuffer[i] = speaker_state ? 32767 : 0;
-		}
-	} else {
-		for(int i=0; i<bytes>>1; i++) {
-			pBuffer[i] = 0;
-		}
-	}
+    int count = bytes / sizeof(short);
+    int countdown;
+    if(device.speaker_transition_count == 0) {
+        countdown = inBuffer->mAudioDataBytesCapacity * 2;
+    } else {
+        countdown = count / device.speaker_transition_count;
+    }
+    int counter = countdown;
+    
+    for(int i=0; i<count; i++) {
+        if(counter-- == 0) {
+            currentSpeakerValue = !currentSpeakerValue;
+            counter = countdown;
+        }
+        short value = currentSpeakerValue ? 0x7fff : 0xffff;
+        pBuffer[i] = value;
+    }
 
-	last_time = now;
-	inBuffer->mAudioDataByteSize = bytes;
-	OSStatus err = AudioQueueEnqueueBuffer(audioQueue, inBuffer, 0, NULL);
+    inBuffer->mAudioDataByteSize = bytes;
+	OSStatus err = AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
 	if(err) {
 		NSLog(@"AudioQueueEnqueueBuffer failed - %d", err);
-	}	
+	}
+
+    //NSLog(@"HERE: %p - %d - %d", inBuffer, count, device.speaker_transition_count);
+    device.speaker_transition_count = 0;
 }
 #endif
 
@@ -421,36 +417,54 @@ void AudioQueueCallback(void* inUserData, AudioQueueRef inAQ,
 
 #ifdef EMULATE_SOUND	
 	// start up the sound support
-    OSStatus err = noErr;
-    // Setup the audio device.
-    AudioStreamBasicDescription deviceFormat;
-    deviceFormat.mSampleRate = SAMPLE_RATE;
-    deviceFormat.mFormatID = kAudioFormatLinearPCM;
-    deviceFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger;
-    deviceFormat.mBytesPerPacket = 2;
-    deviceFormat.mFramesPerPacket = 1;
-    deviceFormat.mBytesPerFrame = 2;
-    deviceFormat.mChannelsPerFrame = 1;
-    deviceFormat.mBitsPerChannel = 16;
-    deviceFormat.mReserved = 0;
-    // Create a new output AudioQueue for the device.
-    err = AudioQueueNewOutput(&deviceFormat, AudioQueueCallback, NULL,
-                              CFRunLoopGetCurrent(), kCFRunLoopCommonModes,
-                              0, &audioQueue);
-	NSLog(@"err = %p", err);
-    // Allocate buffers for the AudioQueue, and pre-fill them.
-    for (int i = 0; i < BUFFER_COUNT; ++i) {
-        AudioQueueBufferRef mBuffer;
-        err = AudioQueueAllocateBuffer(audioQueue, BUFFER_SIZE, &mBuffer);
-		NSLog(@"alloc buffer %d = %p", i, err);
-        if (err != noErr) break;
-        AudioQueueCallback(NULL, audioQueue, mBuffer);
-    }	
-	
-	err = AudioQueueStart(audioQueue, nil);
-	NSLog(@"start = %p", err);
-	
-	fRunning = YES;
+    NSError* error = NULL;
+    
+    if([[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: &error]) {
+        NSLog(@"Set audio session category");
+        
+        OSStatus err = noErr;
+        // Setup the audio device.
+        AudioStreamBasicDescription deviceFormat;
+        deviceFormat.mSampleRate = SAMPLE_RATE;
+        deviceFormat.mFormatID = kAudioFormatLinearPCM;
+        deviceFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+        deviceFormat.mBitsPerChannel = 16;
+        deviceFormat.mChannelsPerFrame = 1;
+        deviceFormat.mBytesPerFrame = sizeof(short) * deviceFormat.mChannelsPerFrame;
+        deviceFormat.mFramesPerPacket = 1;
+        deviceFormat.mBytesPerPacket = deviceFormat.mBytesPerFrame * deviceFormat.mFramesPerPacket;
+        deviceFormat.mReserved = 0;
+        
+        NSLog(@"Allocating audio output queue...");
+        // Create a new output AudioQueue for the device.
+        err = AudioQueueNewOutput(&deviceFormat, AudioQueueCallback, NULL,
+                                  CFRunLoopGetCurrent(), kCFRunLoopCommonModes,
+                                  0, &audioQueue);
+        if(err == noErr) {
+            NSLog(@"Allocated audio output queue successfully");
+
+            // Allocate buffers for the AudioQueue, and pre-fill them.
+            for (int i = 0; i < BUFFER_COUNT; ++i) {
+                AudioQueueBufferRef mBuffer;
+                err = AudioQueueAllocateBuffer(audioQueue, BUFFER_SIZE, &mBuffer);
+                if (err != noErr) break;
+                NSLog(@"Allocated audio buffer %d successfully", i + 1);
+                AudioQueueCallback(NULL, audioQueue, mBuffer);
+            }
+            
+            err = AudioQueueStart(audioQueue, nil);
+            if(err == noErr) {
+                NSLog(@"Started audio queue");
+            } else {
+                NSLog(@"Failed to start audio queue: %d", (int)err);
+            }
+            fRunning = YES;
+        } else {
+            NSLog(@"Audio queue allocation failed: %d", (int)err);
+        }
+    } else {
+        NSLog(@"Unable to set audio session category: %@", error);
+    }
 #endif
 		
 	// connect up the event handlers
